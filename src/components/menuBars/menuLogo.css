@@ -1,0 +1,25 @@
+.menu-logo {
+  padding: 0.7em 1em;
+  margin: auto;
+  text-align: left;
+  font-size: 1.5em;
+  min-width: 7.5em;
+  display: block;
+  max-width: 7em;
+}
+.menu-logo-img {
+  height: 1em;
+  display: inline-block;
+}
+.menu-logo-text {
+  color: #000;
+  display: inline-block;
+  font-family: "Dancing Script", cursive;
+  margin-left: 0.7em;
+  flex-shrink: 0;
+  /* font-family: 'Cookie', cursive;
+    font-family: 'Great Vibes', cursive; */
+}
+.menu-logo-text.light {
+  color: #fff;
+}

@@ -1,0 +1,12 @@
+
+.view-cell{
+    overflow: hidden;
+    /* border: 1px solid purple; */
+  }
+  
+  @media (max-width: 699px) {
+    .view-cell{
+      height: 91vh !important;
+    }
+  }
+  

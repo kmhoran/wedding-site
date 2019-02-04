@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css?family=Cookie|Dancing+Script:800|Great+Vibes");
+
+.hero-card {
+  border: 1px solid #fff;
+  padding: 1em;
+  margin: 0 0.5em;
+  background-color: rgba(26, 35, 126, 0.7);
+  opacity: 0;
+  position: relative;
+  top: 50%;
+  -webkit-transition: all 1s; /* Safari */
+  transition: all 1s;
+}
+.hero-card.active{
+  top: 0;
+  opacity: 1;
+}
+#hero-card-title {
+  color: #fff;
+  font-size: 6em;
+  font-family: "Dancing Script", cursive;
+  /* font-family: 'Cookie', cursive;
+      font-family: 'Great Vibes', cursive; */
+
+}
+
+@media (max-width: 889px) { 
+  .hero-card{
+    
+  }
+  #hero-card-title{
+    font-size: 3em;
+  }
+}

@@ -6,22 +6,7 @@ const rimraf = require("rimraf");
 // const steps = [buildCRA, prepareDistDirectory];
 // let err;
 
-  prepareDistDirectory().then(() => executeScripts());
-
-
-function buildCRA() {
-  return new Promise((resolve, reject) => {
-    exec("yarn react-build", function(err, stdout, stderr) {
-      if (err) {
-        console.log(stderr);
-        reject(err);
-      } else {
-        console.log(stdout);
-        resolve();
-      }
-    });
-  });
-}
+  prepareDistDirectory().then(() => executeScripts()).catch(e => {console.log(e)});
 
 function prepareDistDirectory() {
   return new Promise((resolve, reject) => {
@@ -43,19 +28,6 @@ function prepareDistDirectory() {
   });
 }
 
-function copyUiElements() {
-  return new Promise((resolve, reject) => {
-    exec("cp -rT ./build/ ./dist/ui", function(err, stdout, stderr) {
-      if (err) {
-        console.log(stderr);
-        reject(err);
-      } else {
-        console.log(stdout);
-        resolve();
-      }
-    });
-  });
-}
 
 function executeScripts(){
     return new Promise((resolve, reject) => {

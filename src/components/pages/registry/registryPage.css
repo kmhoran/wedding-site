@@ -1,0 +1,11 @@
+registry-page-frame{
+    min-height: 100vh;
+    border: 1px solid green;
+}
+
+.card-frame{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

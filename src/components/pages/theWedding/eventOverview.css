@@ -1,0 +1,53 @@
+#the-wedding-event-overview-frame {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.info-line {
+  font-size: 1.2em;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+}
+.info-line-icon {
+  display: inline-block;
+  font-size: 1.3em;
+  color: #222;
+  min-width: 1.5em;
+}
+
+.info-line-content {
+  display: inline-block;
+
+  flex: 1, 1;
+  margin: auto;
+}
+
+.event-date{
+    margin-top: 1em;
+}
+
+.event-site {
+  margin-top: 1em;
+}
+.event-site:not(:last-child) {
+  margin-bottom: 2em;
+}
+.event-name {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.event-site-address {
+  max-width: 500px;
+  cursor: pointer;
+}
+
+.event-site-address .info-line-content {
+  margin: 0 0.7em;
+}
