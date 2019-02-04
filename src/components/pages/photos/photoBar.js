@@ -1,15 +1,7 @@
 import React from "react";
+import imageSet from './imageSet';
 import "./photoBar.css";
 
-const imageSet = [
-  "https://images.pexels.com/photos/942317/pexels-photo-942317.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/551628/pexels-photo-551628.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/1338789/pexels-photo-1338789.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/1563286/pexels-photo-1563286.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-  "https://images.pexels.com/photos/1317844/pexels-photo-1317844.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-  "https://images.pexels.com/photos/1831536/pexels-photo-1831536.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-  "https://images.pexels.com/photos/808465/pexels-photo-808465.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
-];
 
 class PhotoBar extends React.Component {
   constructor(props) {
@@ -34,25 +26,25 @@ class PhotoBar extends React.Component {
       loaded: true,
       images: {
         0: {
-          a: this.state.imageSet[0],
+          a: this.state.imageSet[0].image,
           b: null,
           showA: true,
           onDisplay: 0
         },
         1: {
-          a: this.state.imageSet[1],
+          a: this.state.imageSet[1].image,
           b: null,
           showA: true,
           onDisplay: 1
         },
         2: {
-          a: this.state.imageSet[2],
+          a: this.state.imageSet[2].image,
           b: null,
           showA: true,
           onDisplay: 3
         },
         3: {
-          a: this.state.imageSet[3],
+          a: this.state.imageSet[3].image,
           b: null,
           showA: true,
           onDisplay: 3
@@ -94,14 +86,14 @@ class PhotoBar extends React.Component {
       images[nextToUpdateId] = {
         a: images[nextToUpdateId].a,
         showA: false,
-        b: imageSet[nextIndex],
+        b: imageSet[nextIndex].image,
         onDisplay: nextIndex
       };
     } else {
       images[nextToUpdateId] = {
         b: images[nextToUpdateId].b,
         showA: true,
-        a: imageSet[nextIndex],
+        a: imageSet[nextIndex].image,
         onDisplay: nextIndex
       };
     }

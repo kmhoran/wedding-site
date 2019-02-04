@@ -1,7 +1,9 @@
+import routes from "../../constants/routes";
+
 export const menuItems = [
-    { url: "/the-wedding", displayName: "The Wedding" },
-    { url: "/our-story", displayName: "Our Story" },
-    { url: "/2", displayName: "Photos" },
-    { url: "/registry", displayName: "Registry" },
-    { url: "/4", displayName: "RSVP" }
-  ]
+  { url: routes.TheWedding, displayName: "The Wedding" },
+  { url: routes.OurStory, displayName: "Our Story" },
+  { url: routes.Photos, displayName: "Photos" },
+  { url: routes.Registry, displayName: "Registry" },
+  { url: "/4", displayName: "RSVP" }
+];

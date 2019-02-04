@@ -1,0 +1,21 @@
+.carrousel-frame{
+    position: relative;
+    min-height: 65vh;
+    max-width: 60vw;
+    margin: 5em auto;
+
+
+}
+
+.carrousel-frame div{
+    position: relative;
+    height: 100%;
+}
+
+@media (max-width: 889px) { 
+    .carrousel-frame{
+        max-width: 80vw;
+    
+    
+    }
+  }
