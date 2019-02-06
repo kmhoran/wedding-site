@@ -2,20 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./webBar.css";
 import MenuLogo from "./menuLogo";
-
+import RsvpDialog from '../rsvp'
 import { menuItems } from "./menuContents";
 
 const renderItem = items => {
   if (!items) return;
   const menuArray = [];
   items.forEach(item => {
-    menuArray.push(
-      <li className="web-bar-item">
-        <Link className="link" to={item.url}>
-          {item.displayName}
-        </Link>
-      </li>
-    );
+    if(!item.rsvpDialog){
+      menuArray.push(
+        <li className="web-bar-item">
+          <Link className="link" to={item.url}>
+            {item.displayName}
+          </Link>
+        </li>
+      );
+    }
+    else{
+      menuArray.push(
+        <li className="web-bar-item">
+          <RsvpDialog>
+            {item.displayName}
+            </RsvpDialog>
+        </li>
+      );
+    }
+   
   });
   return menuArray;
 };

@@ -11,6 +11,9 @@ import "./photoPage.css";
 import imageSet from './imageSet'
 
 class PhotoCarousel extends React.Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <div className="photo-page-frame">

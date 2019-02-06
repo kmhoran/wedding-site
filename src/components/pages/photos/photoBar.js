@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import imageSet from './imageSet';
 import "./photoBar.css";
+import routes from '../../../constants/routes'
 
 
 class PhotoBar extends React.Component {
@@ -112,6 +114,7 @@ class PhotoBar extends React.Component {
       <div className="photo-bar-frame">
         <div className="cell-duo">
           <div className="bar-cell">
+          <Link to={routes.Photos}>
             <img
               src={images[0].a}
               className={`bar-image ${images[0].showA ? "" : "hidden"}`}
@@ -120,8 +123,10 @@ class PhotoBar extends React.Component {
               src={images[0].b}
               className={`bar-image ${!images[0].showA ? "" : "hidden"}`}
             />
+            </Link>
           </div>
           <div className="bar-cell">
+          <Link to={routes.Photos}>
             <img
               src={images[1].a}
               className={`bar-image ${images[1].showA ? "" : "hidden"}`}
@@ -130,10 +135,12 @@ class PhotoBar extends React.Component {
               src={images[1].b}
               className={`bar-image ${!images[1].showA ? "" : "hidden"}`}
             />
+            </Link>
           </div>
         </div>
         <div className="cell-duo">
           <div className="bar-cell">
+          <Link to={routes.Photos}>
             <img
               src={images[2].a}
               className={`bar-image ${images[2].showA ? "" : "hidden"}`}
@@ -142,8 +149,10 @@ class PhotoBar extends React.Component {
               src={images[2].b}
               className={`bar-image ${!images[2].showA ? "" : "hidden"}`}
             />
+            </Link>
           </div>
           <div className="bar-cell">
+          <Link to={routes.Photos}>
             <img
               src={images[3].a}
               className={`bar-image ${images[3].showA ? "" : "hidden"}`}
@@ -152,6 +161,7 @@ class PhotoBar extends React.Component {
               src={images[3].b}
               className={`bar-image ${!images[3].showA ? "" : "hidden"}`}
             />
+            </Link>
           </div>
         </div>
       </div>

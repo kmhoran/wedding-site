@@ -17,6 +17,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
+import RsvpDialog from '../rsvp'
 
 import "./mobileBar.css";
 
@@ -47,6 +48,10 @@ const styles = theme => ({
 });
 
 class MobileBar extends React.Component {
+  constructor(props){
+    super(props);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+  }
   state = {
     openDrawer: false
   };
@@ -61,18 +66,49 @@ class MobileBar extends React.Component {
     if (!this.state) return <div />;
     const { classes } = this.props;
 
+    const renderItems = items =>{
+      if (!items) return;
+      const menuArray = [];
+      items.forEach((item, index) => {
+        if(!item.rsvpDialog){
+          menuArray.push(
+           <Link underline="none" 
+                  color="text-primary"
+                  to={item.url} >
+              <ListItem 
+                onClick={this.toggleDrawer(false)}
+                onKeyDown={this.toggleDrawer(false)}
+                key={index}>
+                <ListItemText  className="mobile-menu-item"
+                primary={item.displayName} />
+              </ListItem>
+            </Link>
+          );
+        }
+        else{
+          menuArray.push(
+            <RsvpDialog onClose={this.toggleDrawer(false)}>
+              <ListItem 
+              key={index}>
+                <ListItemText  className="mobile-menu-item"
+                primary={item.displayName} />
+              </ListItem>
+            </RsvpDialog>
+          );
+        }
+       
+      });
+      return menuArray;
+    }
+
     const sideList = (
       <div className={classes.list}>
         <List>
           <ListItem button 
-          dense={true}
-          key="close-arrow">
-            {/* <IconButton
-              className={classes.menuButton}
-              size="small"
-              color="inherit"
-              aria-label="Close Menu"
-            > */}
+              onClick={this.toggleDrawer(false)}
+              onKeyDown={this.toggleDrawer(false)}
+              dense={true}
+              key="close-arrow">
               <Icon
                 className={classNames(classes.icon, "fas fa-angle-right")}
               />
@@ -81,17 +117,7 @@ class MobileBar extends React.Component {
         </List>
         <Divider />
         <List>
-          {menuItems.map((item, index) => (
-            <Link underline="none" 
-                  color="text-primary"
-                  to={item.url} >
-              <ListItem 
-              key={index}>
-                <ListItemText  className="mobile-menu-item"
-                primary={item.displayName} />
-              </ListItem>
-            </Link>
-          ))}
+          {renderItems(menuItems)}
         </List>
       </div>
     );
@@ -100,12 +126,6 @@ class MobileBar extends React.Component {
       <div className={classes.root} id="mobile-bar">
         <AppBar position="static" color="primary" position="fixed">
           <Toolbar>
-            {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-          <Icon className={classNames(classes.icon, 'fa fa-plus-circle')} />
-          </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            News
-          </Typography> */}
             <MenuLogo />
             <Typography variant="h6" color="inherit" className={classes.grow}/>
             <IconButton
@@ -127,8 +147,6 @@ class MobileBar extends React.Component {
           <div
             tabIndex={0}
             role="button"
-            onClick={this.toggleDrawer(false)}
-            onKeyDown={this.toggleDrawer(false)}
           >
             {sideList}
           </div>

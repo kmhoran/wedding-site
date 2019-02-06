@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import RsvpDialog from "../../rsvp";
 
 import "./eventOverview.css";
 
@@ -25,9 +26,11 @@ const EventOverview = props => {
   return (
     <div id="the-wedding-event-overview-frame">
       <h2>Save the Date</h2>
-      <Button variant="contained" color="secondary">
-        RSVP Now
-      </Button>
+      <RsvpDialog>
+        <Button variant="contained" color="secondary">
+          RSVP Now
+        </Button>
+      </RsvpDialog>
       <div className="info-line event-date">
         <i class="far fa-calendar-alt info-line-icon" />
         <div className="info-line-content">May 30, 2020</div>
