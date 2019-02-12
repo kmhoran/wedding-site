@@ -1,0 +1,10 @@
+.action-button {
+    float: right;
+    right: 10%;
+    position: relative;
+}
+
+.full-name{
+    font-size: 1.2em;
+    font-weight: 700;
+}

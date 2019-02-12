@@ -105,7 +105,6 @@ class PhotoBar extends React.Component {
     newOndisplay.push(nextIndex);
 
     this.setState({ images: images, onDisplay: newOndisplay });
-    console.log(this.state);
   }
   render() {
     const { loaded, images } = this.state;
