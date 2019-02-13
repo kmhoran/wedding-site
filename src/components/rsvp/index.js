@@ -10,9 +10,11 @@ import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 import { observer, inject, Provider } from "mobx-react";
 import Icon from "@material-ui/core/Icon";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 import RsvpAddName from "./rsvpAddName";
+
+import "./rsvpDialog.css";
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -50,6 +52,12 @@ const RsvpDialogView = inject("rsvpStore")(
         }
       };
 
+      enterNameAddSteps = () => {
+        this.setState({
+          addingGuest: true
+        });
+      };
+
       handleClickNotAttending = () => {
         const { rsvpStore } = this.props;
         rsvpStore.addGuest("some", "name", false, 1);
@@ -62,9 +70,21 @@ const RsvpDialogView = inject("rsvpStore")(
         this.closeDialog();
       };
 
-      handleRsvpSubmit = (firstName, lastName, isAttending, mealId = null, hotelAssistance=false) => {
+      handleRsvpSubmit = (
+        firstName,
+        lastName,
+        isAttending,
+        mealId = null,
+        hotelAssistance = false
+      ) => {
         const { rsvpStore } = this.props;
-        rsvpStore.addGuest(firstName, lastName, isAttending, mealId, hotelAssistance);
+        rsvpStore.addGuest(
+          firstName,
+          lastName,
+          isAttending,
+          mealId,
+          hotelAssistance
+        );
       };
 
       returnToMain = () => {
@@ -88,31 +108,49 @@ const RsvpDialogView = inject("rsvpStore")(
                   <br />
                 </div>
               ))}
+              <DialogActions>
+                <Button onClick={this.closeDialog} autoFocus>
+                  Close
+                </Button>
+                <Button
+                  onClick={this.enterNameAddSteps}
+                  variant="contained"
+                  color="secondary"
+                  autoFocus
+                >
+                  Add Another Name
+                </Button>
+              </DialogActions>
             </div>
           );
         };
         return (
           <div>
-            <div onClick={this.handleClickOpen}>{children}</div>
+            <div className={"trigger"} onClick={this.handleClickOpen}>
+              {children}
+            </div>
             <Dialog
+              className={"modal-dialog"}
               fullScreen={fullScreen}
               fullWidth="lg"
               open={this.state.open}
               TransitionComponent={Transition}
               onClose={this.handleClose}
               aria-labelledby="responsive-dialog-title"
+              onBackdropClick={this.closeDialog}
+              PaperProps={{
+                className: "the-paper"
+              }}
             >
               <div>
                 <Button onClick={this.closeDialog}>
-                <Icon
-                  className={classNames("fas fa-times")}
-                />
+                  <Icon className={classNames("fas fa-times")} />
                 </Button>
               </div>
               <DialogTitle id="responsive-dialog-title">
-                {rsvpStore.hasRsvp
-                  ? "Let us know if your plans have changed."
-                  : "Will we see you there?"}
+                {rsvpStore.guests.length == 0 || addingGuest
+                  ? "Thank you for your RSVP"
+                  : "Let us know if your plans have changed."}
               </DialogTitle>
               <DialogContent>
                 <DialogContentText>

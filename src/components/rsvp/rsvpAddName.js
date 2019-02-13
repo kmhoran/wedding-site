@@ -45,6 +45,7 @@ class RsvpAddName extends React.Component {
     this.handleMealSelect = this.handleMealSelect.bind(this);
     this.handleHotelSelect = this.handleHotelSelect.bind(this);
     this.submitRsvp = this.submitRsvp.bind(this);
+    this.decrementStep = this.decrementStep.bind(this);
   }
 
   componentDidMount() {
@@ -89,6 +90,14 @@ class RsvpAddName extends React.Component {
     if (this.state.step <= 3) {
       this.setState(prevState => ({
         step: prevState.step + 1
+      }));
+    }
+  }
+
+  decrementStep() {
+    if(this.state.step > 1){
+      this.setState(prevState => ({
+        step: prevState.step - 1
       }));
     }
   }
@@ -230,6 +239,7 @@ class RsvpAddName extends React.Component {
       </FormControl>
 
       <DialogActions>
+      <p onClick={this.decrementStep}>Back</p>
         <Button
           onClick={this.submitRsvp}
           variant="contained"

@@ -5,12 +5,16 @@ import EventOverview from "../theWedding/eventOverview";
 import StoryCell from "../ourStory/storyCell";
 import ViewCell from "../viewCell";
 import Hero from "../../hero";
-import PhotoBar from '../photos/photoBar';
-import Footer from '../footer';
+import PhotoBar from "../photos/photoBar";
+import Footer from "../footer";
 
 import "./index.css";
 
 class Home extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div className="App">
@@ -24,8 +28,8 @@ class Home extends Component {
           <StoryCell />
         </ViewCell>
         <ViewCell height="60" />
-        <PhotoBar/>
-        <Footer/>
+        <PhotoBar />
+        <Footer />
       </div>
     );
   }
