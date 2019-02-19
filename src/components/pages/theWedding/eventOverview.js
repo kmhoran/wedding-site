@@ -27,7 +27,7 @@ const EventOverview = props => {
     <div id="the-wedding-event-overview-frame">
       <h2>Save the Date</h2>
       <RsvpDialog>
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="primary">
           RSVP Now
         </Button>
       </RsvpDialog>

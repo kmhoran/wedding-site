@@ -1,39 +1,40 @@
-import { observable, computed, action, autorun,toJS, decorate  } from "mobx";
+import { observable, computed, action, autorun, toJS, decorate } from "mobx";
+import { guid } from "../services/utils";
 
 class RsvpStore {
-    hasRsvp;
-    guests;
+  hasRsvp;
+  guests;
 
-    constructor() {
-        this.hasRsvp = false;
-        this.guests = toJS([]);
-    }
+  constructor() {
+    this.hasRsvp = false;
+    this.guests = toJS([]);
+  }
 
-    activate = () => {
-        console.log('rsvpStore Activated')
-    }
+  activate = () => {
+    console.log("rsvpStore Activated");
+  };
 
-    addGuest = (firstName, lastName, isAttending, mealId, hotelAssistance) => {
-        // give the ui time to transition
-        setTimeout(() => {
-            this.guests.push({
-                firstName,
-                lastName,
-                isAttending,
-                mealId,
-                hotelAssistance
-            });
-            this.hasRsvp = true;
-        }, 500);
-    }
+  addGuest = (firstName, lastName, isAttending, meal) => {
+    // give the ui time to transition
+    setTimeout(() => {
+      this.guests.push({
+        id: guid(),
+        firstName,
+        lastName,
+        isAttending,
+        meal
+      });
+      this.hasRsvp = true;
+    }, 500);
+  };
 }
 
 decorate(RsvpStore, {
-    hasRsvp:observable,
-    guests: observable,
-    activate: action,
-    addGuest: action
-})
+  hasRsvp: observable,
+  guests: observable,
+  activate: action,
+  addGuest: action
+});
 
 const rsvpStore = new RsvpStore();
 

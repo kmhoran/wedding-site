@@ -2,14 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./webBar.css";
 import MenuLogo from "./menuLogo";
-import RsvpDialog from '../rsvp'
+import RsvpDialog from "../rsvp";
 import { menuItems } from "./menuContents";
+import { Button } from "@material-ui/core";
 
 const renderItem = items => {
   if (!items) return;
   const menuArray = [];
   items.forEach(item => {
-    if(!item.rsvpDialog){
+    if (!item.rsvpDialog) {
       menuArray.push(
         <li className="web-bar-item">
           <Link className="link" to={item.url}>
@@ -17,17 +18,15 @@ const renderItem = items => {
           </Link>
         </li>
       );
-    }
-    else{
+    } else {
       menuArray.push(
         <li className="web-bar-item">
           <RsvpDialog>
-            {item.displayName}
-            </RsvpDialog>
+            <Button  variant="contained"  color={'secondary'}>{item.displayName}</Button>
+          </RsvpDialog>
         </li>
       );
     }
-   
   });
   return menuArray;
 };
@@ -38,9 +37,7 @@ const WebBar = props => {
   return (
     <div id="web-bar-frame">
       <MenuLogo />
-      <ul className="web-bar-list">
-        {renderItem(menuItems)}
-      </ul>
+      <ul className="web-bar-list">{renderItem(menuItems)}</ul>
     </div>
   );
 };

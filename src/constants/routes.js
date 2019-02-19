@@ -3,6 +3,7 @@ const routes = {
   TheWedding: "/the-wedding",
   OurStory: "/our-story",
   Registry: "/registry",
-  Photos: "/photos"
+  Photos: "/photos",
+  Cincinnati: "/cincinnati"
 };
 export default routes;

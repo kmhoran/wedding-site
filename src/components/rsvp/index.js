@@ -10,9 +10,11 @@ import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 import { observer, inject, Provider } from "mobx-react";
 import Icon from "@material-ui/core/Icon";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 import RsvpAddName from "./rsvpAddName";
+
+import "./index.css";
 
 function Transition(props) {
   return <Slide direction="up" {...props} />;
@@ -62,9 +64,25 @@ const RsvpDialogView = inject("rsvpStore")(
         this.closeDialog();
       };
 
-      handleRsvpSubmit = (firstName, lastName, isAttending, mealId = null, hotelAssistance=false) => {
+      handleRsvpSubmit = (
+        firstName,
+        lastName,
+        isAttending,
+        meal = null
+      ) => {
         const { rsvpStore } = this.props;
-        rsvpStore.addGuest(firstName, lastName, isAttending, mealId, hotelAssistance);
+        rsvpStore.addGuest(
+          firstName,
+          lastName,
+          isAttending,
+          meal
+        );
+      };
+
+      enterAddNameFlow = () => {
+        this.setState({
+          addingGuest: true
+        });
       };
 
       returnToMain = () => {
@@ -81,13 +99,66 @@ const RsvpDialogView = inject("rsvpStore")(
         const content = () => {
           return (
             <div>
-              {rsvpStore.guests.map(guest => (
-                <div>
-                  <h4>{`${guest.firstName} ${guest.lastName}`}</h4>
-                  <div>{guest.isAttending ? "Attending" : "Not Attending"}</div>
-                  <br />
-                </div>
-              ))}
+              <div className={"guest-collection"}>
+                {rsvpStore.guests.map(guest => (
+                  <div key={guest.id} className={"guest-tile"}>
+                    <div className={"guest-name"}>{`${guest.firstName} ${
+                      guest.lastName
+                    }`}</div>
+                    <div>
+                      <div
+                        className={classNames(
+                          "guest-attending",
+                          "icon-line",
+                          guest.isAttending ? "accept" : "reject"
+                        )}
+                      >
+                        <div className={"guest-attending-icon icon"}>
+                          <Icon
+                            className={classNames(
+                              guest.isAttending
+                                ? "fas fa-check"
+                                : "fas fa-times"
+                            )}
+                          />
+                        </div>
+                        <div className={"guest-attending-text"}>
+                          {guest.isAttending ? "Attending" : "Not Attending"}
+                        </div>
+                      </div>
+                    </div>
+                    {guest.isAttending && (
+                      <div>
+                        <div
+                          className={classNames(
+                            "icon-line",
+                            "guest-meal",
+                            guest.meal === "vegetarian" ? "veg" : ""
+                          )}
+                        >
+                          <div className={"guest-meal-icon icon"}>
+                            <Icon className={classNames("fas fa-utensils")} />
+                          </div>
+                          <div className={"guest-meal-name"}>{guest.meal}</div>
+                        </div>
+                      </div>
+                    )}
+
+                    <br />
+                  </div>
+                ))}
+              </div>
+              <DialogActions>
+                <Button onClick={this.closeDialog}>Close</Button>
+                <Button
+                  onClick={this.enterAddNameFlow}
+                  variant="contained"
+                  color="secondary"
+                  autoFocus
+                >
+                  Add Another Guest
+                </Button>
+              </DialogActions>
             </div>
           );
         };
@@ -104,9 +175,7 @@ const RsvpDialogView = inject("rsvpStore")(
             >
               <div>
                 <Button onClick={this.closeDialog}>
-                <Icon
-                  className={classNames("fas fa-times")}
-                />
+                  <Icon className={classNames("fas fa-times")} />
                 </Button>
               </div>
               <DialogTitle id="responsive-dialog-title">

@@ -10,11 +10,13 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       //main: "#f06292",
-      main: "#aed581"
+      //main: "#aed581" --> green
+      main: "#1a237e"
     },
     secondary: {
       // main: "#5b6b90",
-      main: "#5b6b90",
+      //main: "#5b6b90", --> navy
+      main: "#c62828"
       
     },
     contrastThreshold: 3,

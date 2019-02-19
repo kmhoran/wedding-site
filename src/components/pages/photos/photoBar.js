@@ -55,9 +55,9 @@ class PhotoBar extends React.Component {
       lastIndexSeen: 3,
       onDisplay: [0, 1, 2, 3]
     });
-    setInterval(() => {
-      this.runCarousel();
-    }, 5000);
+    // setInterval(() => {
+    //   this.runCarousel();
+    // }, 5000);
   }
 
   runCarousel() {

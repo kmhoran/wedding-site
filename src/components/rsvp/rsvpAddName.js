@@ -43,7 +43,6 @@ class RsvpAddName extends React.Component {
     this.incrementStep = this.incrementStep.bind(this);
     this.declineRsvp = this.declineRsvp.bind(this);
     this.handleMealSelect = this.handleMealSelect.bind(this);
-    this.handleHotelSelect = this.handleHotelSelect.bind(this);
     this.submitRsvp = this.submitRsvp.bind(this);
   }
 
@@ -54,7 +53,7 @@ class RsvpAddName extends React.Component {
       firstNameTouched: false,
       lastName: null,
       lastNameTouched: false,
-      mealId: null,
+      meal: null,
       hotelAssistance: false
     });
   }
@@ -75,15 +74,15 @@ class RsvpAddName extends React.Component {
   }
   handleMealSelect(e) {
     this.setState({
-      mealId: e.target.value
+      meal: e.target.value
     });
   }
 
-  handleHotelSelect(e) {
-    this.setState({
-      hotelAssistance: e.target.checked
-    });
-  }
+  // handleHotelSelect(e) {
+  //   this.setState({
+  //     hotelAssistance: e.target.checked
+  //   });
+  // }
 
   incrementStep() {
     if (this.state.step <= 3) {
@@ -100,8 +99,8 @@ class RsvpAddName extends React.Component {
   }
 
   submitRsvp() {
-    const { firstName, lastName, mealId, hotelAssistance } = this.state;
-    this.props.submitRsvp(firstName, lastName, true, mealId, hotelAssistance);
+    const { firstName, lastName, meal } = this.state;
+    this.props.submitRsvp(firstName, lastName, true, meal);
     this.props.returnToMain();
   }
 
@@ -197,7 +196,7 @@ class RsvpAddName extends React.Component {
     const {
       firstName,
       lastName,
-      mealId
+      meal
     } = this.state;
     return(
     <div>
@@ -213,20 +212,21 @@ class RsvpAddName extends React.Component {
           value={this.state.value}
           onChange={this.handleMealSelect}
         >
-          <FormControlLabel value="1" control={<Radio />} label="Beef" />
-          <FormControlLabel value="2" control={<Radio />} label="Chicken" />
+          <FormControlLabel value="beef" control={<Radio />} label="Beef" />
+          <FormControlLabel value="chicken" control={<Radio />} label="Chicken" />
           <FormControlLabel
-            value="3"
+            value="vegetarian"
             control={<Radio />}
             label="Vegetarian"
           />
         </RadioGroup>
-        <hr/>
-        <FormControlLabel
+        <div className="meal-question">
+        {/* <FormControlLabel
           control={<Checkbox onChange={this.handleHotelSelect} />}
           label="Will you need assistance finding a hotel?"
           labelPlacement="start"
-        />
+        /> */}
+        </div>
       </FormControl>
 
       <DialogActions>
@@ -234,7 +234,7 @@ class RsvpAddName extends React.Component {
           onClick={this.submitRsvp}
           variant="contained"
           color="secondary"
-          disabled={!mealId}
+          disabled={!meal}
           autoFocus
         >
           Submit

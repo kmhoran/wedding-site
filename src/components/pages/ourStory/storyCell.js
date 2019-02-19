@@ -73,7 +73,7 @@ class StoryCell extends React.Component {
               electronic typesetting, remaining essentially unchanged.
             </div>
             <Link to="/our-story">
-            <Button variant="contained" color="primary">Read More</Button>
+            <Button variant="contained" color="secondary">Read More</Button>
             </Link>
           </div>
           <ImagePane

@@ -6,11 +6,11 @@ import logo from "../../logo.png";
 
 const MenuLogo = props => {
 const {color} = props;
-const textClass = color && color.toLowerCase() == 'light' ?  "menu-logo-text light" : "menu-logo-text";
+const menuClass = color && color.toLowerCase() == 'light' ?  "menu-logo light" : "menu-logo";
   return (
-      <Link to="/" className="menu-logo">
+      <Link to="/" className={menuClass}>
         <img src={logo} className="menu-logo-img" alt="" />
-        <div className={textClass}>Katie & Kevin</div>
+        <div className={'menu-logo-text'}>Katie & Kevin</div>
       </Link>
   );
 };
