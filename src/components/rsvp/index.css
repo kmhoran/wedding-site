@@ -1,0 +1,50 @@
+.guest-collection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.guest-tile {
+  width: 10em;
+  margin: 5px;
+  padding: 5px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.guest-tile:hover {
+  box-shadow: 0 0 5px lightgray;
+}
+.icon-line {
+  display: flex;
+  align-items: flex-start;
+}
+
+.icon-line .icon{
+    margin-right: 1em;
+    font-weight: 700;
+    color: #333;
+}
+.guest-name {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+.guest-attending.accept .icon{
+    color: green;
+}
+
+.guest-attending.reject .icon{
+    color: red;
+}
+.guest-meal {
+  text-transform: capitalize;
+}
+.guest-meal-icon {
+
+}
+
+.veg .guest-meal-icon {
+  color: green;
+}
+.veg .guest-meal-name {
+  color: green;
+}
