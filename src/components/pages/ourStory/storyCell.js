@@ -4,6 +4,7 @@ import IntersectionVisible from "react-intersection-visible";
 
 import "./storyCell.css";
 import { Button } from "@material-ui/core";
+import photos from '../../../constants/photos';
 
 const ImagePane = props => {
   if (!props.clazzes) props.clazzes = [];
@@ -56,7 +57,7 @@ class StoryCell extends React.Component {
         <div className="story-cell-frame">
           <ImagePane
             clazzes={this.state.presentationClasses.concat(["mobile"])}
-            src={["./assets/images/eiffel.jpg", "./assets/images/lille.jpg"]}
+            src={[photos.paris, photos.lille]}
           />
           <div
             className={this.state.presentationClasses

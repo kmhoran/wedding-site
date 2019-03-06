@@ -1,21 +1,31 @@
 import React, { Component } from "react";
+import { observer, inject, Provider } from "mobx-react";
 import MobileBar from "../../menuBars/mobileBar";
 import WebBar from "../../menuBars/webBar";
 import EventOverview from "../theWedding/eventOverview";
 import StoryCell from "../ourStory/storyCell";
 import ViewCell from "../viewCell";
 import Hero from "../../hero";
+import LocationTileBar from './locationTile';
 import PhotoBar from "../photos/photoBar";
 import Footer from "../footer";
 
 import "./index.css";
 
-class Home extends Component {
+const HomeView = inject("photobarStore")(
+  observer(
+    class Home extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
+    console.log('mounted');
+    this.props.photobarStore.activate();
+  }
+  componentWillUnmount() {
+    this.props.photobarStore.deactivate();
   }
 
   render() {
+    const {photobarStore} = this.props; 
     return (
       <div className="App">
         <MobileBar />
@@ -27,12 +37,14 @@ class Home extends Component {
         <ViewCell height="70">
           <StoryCell />
         </ViewCell>
-        <ViewCell height="60" />
-        <PhotoBar />
+        <LocationTileBar/>
+        <PhotoBar images={photobarStore.images} loaded={photobarStore.loaded} />
         <Footer />
       </div>
     );
   }
 }
+  )
+);
 
-export default Home;
+export default HomeView;

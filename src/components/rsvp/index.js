@@ -9,10 +9,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 import { observer, inject, Provider } from "mobx-react";
+import { reaction } from "mobx";
 import Icon from "@material-ui/core/Icon";
 import classNames from "classnames";
 
 import RsvpAddName from "./rsvpAddName";
+import RsvpUpdateGuest from "./rsvpUpdateGuest";
 
 import "./index.css";
 
@@ -25,12 +27,20 @@ const RsvpDialogView = inject("rsvpStore")(
     class RsvpDialog extends React.Component {
       state = {
         open: false,
-        addingGuest: false
+        addingGuest: false,
+        updatingGuest: false,
+        highlightedGuest: null
       };
       constructor(props) {
         super(props);
         this.handleRsvpSubmit = this.handleRsvpSubmit.bind(this);
         this.returnToMain = this.returnToMain.bind(this);
+        this.r1 = reaction(
+          () => props.rsvpStore,
+          s => {
+            console.log("component reaction!!! ", s.guests);
+          }
+        );
       }
 
       componentDidMount() {
@@ -41,7 +51,9 @@ const RsvpDialogView = inject("rsvpStore")(
         const { rsvpStore } = this.props;
         this.setState({
           open: true,
-          addingGuest: rsvpStore.guests.length == 0
+          addingGuest: rsvpStore.guests.length == 0,
+          updatingGuest: false,
+          highlightedGuest: null
         });
       };
 
@@ -54,7 +66,9 @@ const RsvpDialogView = inject("rsvpStore")(
 
       enterNameAddSteps = () => {
         this.setState({
-          addingGuest: true
+          addingGuest: true,
+          updatingGuest: false,
+          highlightedGuest: null
         });
       };
 
@@ -70,36 +84,42 @@ const RsvpDialogView = inject("rsvpStore")(
         this.closeDialog();
       };
 
-      handleRsvpSubmit = (
-        firstName,
-        lastName,
-        isAttending,
-        meal = null
-      ) => {
+      handleRsvpSubmit = (firstName, lastName, isAttending, meal = null) => {
         const { rsvpStore } = this.props;
-        rsvpStore.addGuest(
-          firstName,
-          lastName,
-          isAttending,
-          meal
-        );
+        rsvpStore.addGuest(firstName, lastName, isAttending, meal);
       };
 
       enterAddNameFlow = () => {
         this.setState({
-          addingGuest: true
+          addingGuest: true,
+          updatingGuest: false,
+          highlightedGuest: null
         });
       };
 
       returnToMain = () => {
         this.setState({
-          addingGuest: false
+          addingGuest: false,
+          updatingGuest: false,
+          highlightedGuest: null
+        });
+      };
+
+      enterUpdateGuestFlow = id => {
+        const highlightedGuest = rsvpStore.guests.filter(g => {
+          return g.id === id;
+        })[0];
+        console.log('updating: ', highlightedGuest);
+        this.setState({
+          addingGuest: false,
+          updatingGuest: true,
+          highlightedGuest
         });
       };
 
       render() {
         const { fullScreen, children, rsvpStore } = this.props;
-        const { addingGuest } = this.state;
+        const { addingGuest, updatingGuest, highlightedGuest } = this.state;
         if (!rsvpStore) return <div>Loading..</div>;
 
         const content = () => {
@@ -107,7 +127,10 @@ const RsvpDialogView = inject("rsvpStore")(
             <div>
               <div className={"guest-collection"}>
                 {rsvpStore.guests.map(guest => (
-                  <div key={guest.id} className={"guest-tile"}>
+                  <div 
+                      key={guest.id} 
+                      className={"guest-tile"}
+                      onClick={() => {enterUpdateGuestFlow(guest.id)}}>
                     <div className={"guest-name"}>{`${guest.firstName} ${
                       guest.lastName
                     }`}</div>
@@ -158,7 +181,6 @@ const RsvpDialogView = inject("rsvpStore")(
                 <Button onClick={this.closeDialog}>Close</Button>
                 <Button
                   onClick={this.enterAddNameFlow}
-
                   variant="contained"
                   color="secondary"
                   autoFocus
@@ -204,27 +226,18 @@ const RsvpDialogView = inject("rsvpStore")(
                       submitRsvp={this.handleRsvpSubmit}
                       returnToMain={this.returnToMain}
                     />
+                  ) : rsvpStore.guests.length > 0 &&
+                    updatingGuest &&
+                    highlightedGuest ? (
+                    <RsvpUpdateGuest
+                      submitRsvp={this.handleRsvpSubmit}
+                      returnToMain={this.returnToMain}
+                    />
                   ) : (
                     content()
                   )}
                 </DialogContentText>
               </DialogContent>
-              {/* <DialogActions>
-              <Button
-                  onClick={this.handleClickAttending}
-                  color="psecondary"
-                  autoFocus
-                >
-                  I'm Going
-                </Button>
-                <Button
-                  onClick={this.handleClickNotAttending}
-                  color="psecondary"
-                  autoFocus
-                >
-                  I Can't Make It
-                </Button>
-              </DialogActions> */}
             </Dialog>
           </div>
         );

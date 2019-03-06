@@ -8,7 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import "./carousel.min.css";
 import "./photoPage.css";
 
-import imageSet from './imageSet'
+import { gallarySet } from "../../../constants/photos";
 
 class PhotoCarousel extends React.Component {
   componentDidMount() {
@@ -20,15 +20,15 @@ class PhotoCarousel extends React.Component {
         <MobileBar />
         <WebBar />
         <div>
-        <div className="carrousel-frame">
-          <Carousel infiniteLoop useKeyboardArrows autoPlay>
-              {imageSet.map((item, index, arr) => (
+          <div className="carrousel-frame">
+            <Carousel infiniteLoop useKeyboardArrows autoPlay>
+              {gallarySet.map((item, index, arr) => (
                 <div>
-              <img src={imageSet[index].image} />
-              <p className="legend">{imageSet[index].label}</p>
-            </div>
+                  <img src={gallarySet[index].image} />
+                  <p className="legend">{gallarySet[index].label}</p>
+                </div>
               ))}
-          </Carousel>
+            </Carousel>
           </div>
         </div>
         <Footer />

@@ -4,6 +4,7 @@ import MobileBar from "../../menuBars/mobileBar";
 import Hero from "../../hero";
 import ViewCell from "../viewCell";
 import Footer from '../footer';
+import photos from '../../../constants/photos'
 
 import "./cincinnatiPage.css";
 
@@ -17,7 +18,7 @@ class CincinnatiPage extends React.Component {
         <MobileBar />
         <WebBar />
         <Hero
-          imageSrc="https://cdn.pixabay.com/photo/2013/02/08/16/12/cincinnati-79357_1280.jpg"
+          imageSrc={photos.cincyHero}
           text="Cincinnati: the Queen City"
           height="100vh"
         />

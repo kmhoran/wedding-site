@@ -37,15 +37,15 @@ const EventOverview = props => {
       </div>
       <EventSiteCard
         eventName="Ceremony"
-        siteTitle="Old St. Mary's Catholic Church"
-        address="3155 Sherilyn Ln, Cincinnatti, OH, 45103, USA"
-        time="2:00 pm"
+        siteTitle="St. Louis Catholic Church"
+        address="29 E 8th St, Cincinnati, OH 45202"
+        time="4:45 pm"
       />
       <EventSiteCard
         eventName="Reception"
-        siteTitle="Music Hall, Cincinnatti"
-        address="3155 Sherilyn Ln, Cincinnatti, OH, 45103, USA"
-        time="5:00 pm"
+        siteTitle="The Cincinnati Club"
+        address="4300, 30 Garfield Pl, Cincinnati, OH 45202"
+        time="5:45 pm"
       />
     </div>
   );
