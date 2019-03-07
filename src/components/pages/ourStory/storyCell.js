@@ -51,7 +51,6 @@ class StoryCell extends React.Component {
   render() {
     if (!this.state.presentationClasses)
       return <div>{JSON.stringify(this.state)}</div>;
-    console.log("presentationClasses: ", this.state.presentationClasses);
     return (
       <IntersectionVisible className="container" onShow={e => this.onShow(e)}>
         <div className="story-cell-frame">

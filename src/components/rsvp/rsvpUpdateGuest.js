@@ -15,247 +15,110 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 import "./rsvpUpdateGuest.css";
 
-const styles = theme => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around"
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
-  },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200
-  }
-});
 
 class RsvpUpdateGuest extends React.Component {
   state = {};
   constructor(props) {
     super(props);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.incrementStep = this.incrementStep.bind(this);
     this.declineRsvp = this.declineRsvp.bind(this);
-    this.handleMealSelect = this.handleMealSelect.bind(this);
+    this.handleCommentUpdate = this.handleCommentUpdate.bind(this);
     this.submitRsvp = this.submitRsvp.bind(this);
-    this.decrementStep = this.decrementStep.bind(this);
   }
 
   componentDidMount() {
+    const comments = this.props.guest ? this.props.guest.comments : null;
     this.setState({
-      step: 1,
-      firstName: null,
-      firstNameTouched: false,
-      lastName: null,
-      lastNameTouched: false,
-      meal: null,
+      comments,
       hotelAssistance: false
     });
   }
 
-  handleFirstNameChange(e) {
-    console.log(e.target.value);
+  handleCommentUpdate(e) {
     this.setState({
-      firstName: e.target.value,
-      firstNameTouched: true
+      comments: e.target.value
     });
-  }
-
-  handleLastNameChange(e) {
-    this.setState({
-      lastName: e.target.value,
-      lastNameTouched: true
-    });
-  }
-  handleMealSelect(e) {
-    this.setState({
-      meal: e.target.value
-    });
-  }
-
-  // handleHotelSelect(e) {
-  //   this.setState({
-  //     hotelAssistance: e.target.checked
-  //   });
-  // }
-
-  incrementStep() {
-    if (this.state.step <= 3) {
-      this.setState(prevState => ({
-        step: prevState.step + 1
-      }));
-    }
-  }
-
-  decrementStep() {
-    if(this.state.step > 1){
-      this.setState(prevState => ({
-        step: prevState.step - 1
-      }));
-    }
   }
 
   declineRsvp() {
-    const { firstName, lastName } = this.state;
-    this.props.submitRsvp(firstName, lastName, false);
-    this.props.returnToMain();
+    if (!(this.props && this.props.guest)) return;
+    const { id, firstName, lastName } = this.props.guest;
+    this.props.submitRsvp({id, firstName, lastName, isAttending:false});
+    this.props.exitUpdate();
   }
 
   submitRsvp() {
-    const { firstName, lastName, meal } = this.state;
-    this.props.submitRsvp(firstName, lastName, true, meal);
-    this.props.returnToMain();
+    if (!(this.props && this.props.guest)) return;
+    const { id, firstName, lastName } = this.props.guest;
+    const { comments } = this.state;
+    this.props.submitRsvp({id, firstName, lastName, isAttending:true, comments});
+    this.props.exitUpdate();
   }
 
   render() {
-    const { classes } = this.props;
-    const {
-      step,
-      firstName,
-      firstNameTouched,
-      lastName,
-      lastNameTouched,
-    } = this.state;
+    if (!(this.props && this.props.guest)) return <div/>;
+    const { guest } = this.props;
+    const { firstName, lastName, isAttending } = this.props.guest;
+    const { comments } = this.state;
 
-    const enterName = () => (
-      <div>
-        <form className={classes.container} noValidate autoComplete="off">
-          <TextField
-            required
-            error={!firstName && firstNameTouched}
-            id="first-name"
-            label="First Name"
-            className={classes.textField}
-            value={firstName}
-            onChange={this.handleFirstNameChange}
-            margin="normal"
-          />
-          <TextField
-            required
-            error={!lastName && lastNameTouched}
-            id="last-name"
-            label="Last Name"
-            className={classes.textField}
-            value={lastName}
-            onChange={this.handleLastNameChange}
-            margin="normal"
-          />
-        </form>
-        <br />
-        <div className="action-button">
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={this.incrementStep}
-            disabled={!firstName || !lastName}
-          >
-            Next {"\u00A0"}
-            <span className="fas fa-arrow-right" />
-          </Button>
-        </div>
-      </div>
-    );
 
-    const chooseRsvp = () => (
+    return (
       <div>
         <div className="full-name">{`${firstName} ${lastName}`}</div>
-        <br />
-        <DialogActions>
-          <Button onClick={this.declineRsvp} autoFocus>
-            I Can't Make It
-          </Button>
-          <Button
-            onClick={this.incrementStep}
-            variant="contained"
-            color="secondary"
+
+        <div className={"form-description"}>
+          Please let us know if you have any food allergies or dietary
+          restrictions. {comments}
+        </div>
+        <form>
+          <TextField
+            id="outlined-multiline-flexible"
+            multiline
+            fullWidth
             autoFocus
-          >
-            I'm Going
-          </Button>
+            value={comments}
+            label="Dietary Restrictions"
+            onChange={this.handleCommentUpdate}
+            margin="normal"
+            variant="outlined"
+          />
+        </form>
+        <DialogActions>
+        <Button color="default" onClick={this.props.exitUpdate}>
+                Cancel
+              </Button>
+
+          {isAttending && (
+            <div>
+              <Button color="secondary" onClick={this.declineRsvp}>
+                I Can't Make It
+              </Button>
+              <Button
+                onClick={this.submitRsvp}
+                variant="contained"
+                color="primary"
+                disabled={comments === guest.comments}
+              >
+                Update Restrictions
+              </Button>
+            </div>
+          )}
+          {!isAttending && (
+            <Button
+              onClick={this.submitRsvp}
+              variant="contained"
+              color="primary"
+            >
+              I'm Going
+            </Button>
+          )}
         </DialogActions>
       </div>
     );
-
-    
-
-    const renderContent = () => {
-      switch (step) {
-        case 1:
-          return enterName();
-        case 2:
-          return chooseRsvp();
-        case 3:
-          return this.choosePreferences(this.props);
-        default:
-          return <h1>End of Index</h1>;
-      }
-    };
-
-    return <div>{renderContent()}</div>;
   }
-
-  choosePreferences = (props) => {
-    const { classes } = props;
-    const {
-      firstName,
-      lastName,
-      meal
-    } = this.state;
-    return(
-    <div>
-      <div className="full-name">{`${firstName} ${lastName}`}</div>
-      <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">
-          Select Your Meal
-        </FormLabel>
-        <RadioGroup
-          aria-label="Meal Select"
-          name="mealSelect"
-          className={classes.group}
-          value={this.state.value}
-          onChange={this.handleMealSelect}
-        >
-          <FormControlLabel value="beef" control={<Radio />} label="Beef" />
-          <FormControlLabel value="chicken" control={<Radio />} label="Chicken" />
-          <FormControlLabel
-            value="vegetarian"
-            control={<Radio />}
-            label="Vegetarian"
-          />
-        </RadioGroup>
-        <div className="meal-question">
-        {/* <FormControlLabel
-          control={<Checkbox onChange={this.handleHotelSelect} />}
-          label="Will you need assistance finding a hotel?"
-          labelPlacement="start"
-        /> */}
-        </div>
-      </FormControl>
-
-      <DialogActions>
-      <p onClick={this.decrementStep}>Back</p>
-        <Button
-          onClick={this.submitRsvp}
-          variant="contained"
-          color="secondary"
-          disabled={!meal}
-          autoFocus
-        >
-          Submit
-        </Button>
-      </DialogActions>
-    </div>
-  );}
 }
 
 RsvpUpdateGuest.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(RsvpUpdateGuest);
+export default RsvpUpdateGuest;

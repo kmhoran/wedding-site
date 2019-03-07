@@ -35,12 +35,6 @@ const RsvpDialogView = inject("rsvpStore")(
         super(props);
         this.handleRsvpSubmit = this.handleRsvpSubmit.bind(this);
         this.returnToMain = this.returnToMain.bind(this);
-        this.r1 = reaction(
-          () => props.rsvpStore,
-          s => {
-            console.log("component reaction!!! ", s.guests);
-          }
-        );
       }
 
       componentDidMount() {
@@ -72,21 +66,9 @@ const RsvpDialogView = inject("rsvpStore")(
         });
       };
 
-      handleClickNotAttending = () => {
+      handleRsvpSubmit = (guestObject) => {
         const { rsvpStore } = this.props;
-        rsvpStore.addGuest("some", "name", false, 1);
-        this.closeDialog();
-      };
-
-      handleClickAttending = () => {
-        const { rsvpStore } = this.props;
-        rsvpStore.addGuest("some", "name", true, 1);
-        this.closeDialog();
-      };
-
-      handleRsvpSubmit = (firstName, lastName, isAttending, meal = null) => {
-        const { rsvpStore } = this.props;
-        rsvpStore.addGuest(firstName, lastName, isAttending, meal);
+        rsvpStore.saveGuest(guestObject);
       };
 
       enterAddNameFlow = () => {
@@ -105,11 +87,18 @@ const RsvpDialogView = inject("rsvpStore")(
         });
       };
 
+      exitFlows = () => {
+        this.setState({
+          addingGuest: false,
+          updatingGuest: false,
+          highlightedGuest: null
+        });
+      }
+
       enterUpdateGuestFlow = id => {
-        const highlightedGuest = rsvpStore.guests.filter(g => {
+        const highlightedGuest = this.props.rsvpStore.guests.filter(g => {
           return g.id === id;
         })[0];
-        console.log('updating: ', highlightedGuest);
         this.setState({
           addingGuest: false,
           updatingGuest: true,
@@ -130,7 +119,7 @@ const RsvpDialogView = inject("rsvpStore")(
                   <div 
                       key={guest.id} 
                       className={"guest-tile"}
-                      onClick={() => {enterUpdateGuestFlow(guest.id)}}>
+                      onClick={() => {this.enterUpdateGuestFlow(guest.id)}}>
                     <div className={"guest-name"}>{`${guest.firstName} ${
                       guest.lastName
                     }`}</div>
@@ -156,19 +145,17 @@ const RsvpDialogView = inject("rsvpStore")(
                         </div>
                       </div>
                     </div>
-                    {guest.isAttending && (
+                    {guest.isAttending && guest.comments && (
                       <div>
                         <div
                           className={classNames(
                             "icon-line",
-                            "guest-meal",
-                            guest.meal === "vegetarian" ? "veg" : ""
-                          )}
+                            "guest-meal")}
                         >
                           <div className={"guest-meal-icon icon"}>
-                            <Icon className={classNames("fas fa-utensils")} />
+                            <Icon className={classNames("fas fa-drumstick-bite")} />
                           </div>
-                          <div className={"guest-meal-name"}>{guest.meal}</div>
+                          <div className={"guest-meal-name"}>{guest.comments}</div>
                         </div>
                       </div>
                     )}
@@ -182,7 +169,7 @@ const RsvpDialogView = inject("rsvpStore")(
                 <Button
                   onClick={this.enterAddNameFlow}
                   variant="contained"
-                  color="secondary"
+                  color="primary"
                   autoFocus
                 >
                   Add Another Guest
@@ -230,8 +217,9 @@ const RsvpDialogView = inject("rsvpStore")(
                     updatingGuest &&
                     highlightedGuest ? (
                     <RsvpUpdateGuest
+                      guest={highlightedGuest}
                       submitRsvp={this.handleRsvpSubmit}
-                      returnToMain={this.returnToMain}
+                      exitUpdate={this.exitFlows}
                     />
                   ) : (
                     content()

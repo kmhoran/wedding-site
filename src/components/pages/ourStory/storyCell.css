@@ -87,6 +87,9 @@ margin: auto;
   .image-pane.web {
     display: none;
   }
+  .image-pane.mobile{
+    margin-top: 1em;
+  }
   .story-cell-frame {
     flex-direction: column;
   }

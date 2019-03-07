@@ -1,33 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import imageSet from "./imageSet";
-import { gallarySet } from "../../../constants/photos";
+import { observer, inject, Provider } from "mobx-react";
 import "./photoBar.css";
 import routes from "../../../constants/routes";
 
-const imageSet = gallarySet;
-
-class PhotoBar extends React.Component {
-
+const PhotoBarView = inject("photobarStore")(
+  observer(
+    class PhotoBar extends React.Component {
+    componentDidMount(){
+      this.props.photobarStore.activate();
+    }
+    componentWillUnmount() {
+      this.props.photobarStore.deactivate();
+    }
   render() {
-    if (!this.props.loaded) return <div />;
+    const { photobarStore } = this.props;
+
+    if (! photobarStore.loaded) return <div />;
     return (
       <div className="photo-bar-frame">
         <div className="cell-duo">
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-              style={this.props.images[0].a.barAdjustment}
-                src={this.props.images[0].a.image}
+              style={ photobarStore.images[0].a.barAdjustment}
+                src={ photobarStore.images[0].a.image}
                 className={`bar-image ${
-                  this.props.images[0].showA ? "" : "hidden"
+                  photobarStore.images[0].showA ? "" : "hidden"
                 }`}
               />
               <img
-              style={this.props.images[0].b.barAdjustment}
-                src={this.props.images[0].b.image}
+              style={ photobarStore.images[0].b.barAdjustment}
+                src={ photobarStore.images[0].b.image}
                 className={`bar-image ${
-                  !this.props.images[0].showA ? "" : "hidden"
+                  ! photobarStore.images[0].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -35,17 +41,17 @@ class PhotoBar extends React.Component {
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-                style={this.props.images[1].a.barAdjustment}
-                src={this.props.images[1].a.image}
+                style={ photobarStore.images[1].a.barAdjustment}
+                src={ photobarStore.images[1].a.image}
                 className={`bar-image ${
-                  this.props.images[1].showA ? "" : "hidden"
+                  photobarStore.images[1].showA ? "" : "hidden"
                 }`}
               />
               <img
-                style={this.props.images[1].b.barAdjustment}
-                src={this.props.images[1].b.image}
+                style={ photobarStore.images[1].b.barAdjustment}
+                src={ photobarStore.images[1].b.image}
                 className={`bar-image ${
-                  !this.props.images[1].showA ? "" : "hidden"
+                  ! photobarStore.images[1].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -55,17 +61,17 @@ class PhotoBar extends React.Component {
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-                style={this.props.images[2].a.barAdjustment}
-                src={this.props.images[2].a.image}
+                style={ photobarStore.images[2].a.barAdjustment}
+                src={ photobarStore.images[2].a.image}
                 className={`bar-image ${
-                  this.props.images[2].showA ? "" : "hidden"
+                  photobarStore.images[2].showA ? "" : "hidden"
                 }`}
               />
               <img
-                style={this.props.images[2].b.barAdjustment}
-                src={this.props.images[2].b.image}
+                style={ photobarStore.images[2].b.barAdjustment}
+                src={ photobarStore.images[2].b.image}
                 className={`bar-image ${
-                  !this.props.images[2].showA ? "" : "hidden"
+                  ! photobarStore.images[2].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -73,17 +79,17 @@ class PhotoBar extends React.Component {
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-                style={this.props.images[3].a.barAdjustment}
-                src={this.props.images[3].a.image}
+                style={ photobarStore.images[3].a.barAdjustment}
+                src={ photobarStore.images[3].a.image}
                 className={`bar-image ${
-                  this.props.images[3].showA ? "" : "hidden"
+                  photobarStore.images[3].showA ? "" : "hidden"
                 }`}
               />
               <img
-                style={this.props.images[3].b.barAdjustment}
-                src={this.props.images[3].b.image}
+                style={ photobarStore.images[3].b.barAdjustment}
+                src={ photobarStore.images[3].b.image}
                 className={`bar-image ${
-                  !this.props.images[3].showA ? "" : "hidden"
+                  ! photobarStore.images[3].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -92,6 +98,7 @@ class PhotoBar extends React.Component {
       </div>
     );
   }
-}
+}  )
+);
 
-export default PhotoBar;
+export default PhotoBarView;

@@ -42,7 +42,7 @@ class RsvpAddName extends React.Component {
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
     this.incrementStep = this.incrementStep.bind(this);
     this.declineRsvp = this.declineRsvp.bind(this);
-    this.handleMealSelect = this.handleMealSelect.bind(this);
+    this.handleCommentAdditions = this.handleCommentAdditions.bind(this);
     this.submitRsvp = this.submitRsvp.bind(this);
     this.decrementStep = this.decrementStep.bind(this);
   }
@@ -54,13 +54,13 @@ class RsvpAddName extends React.Component {
       firstNameTouched: false,
       lastName: null,
       lastNameTouched: false,
+      comments: null,
       meal: null,
       hotelAssistance: false
     });
   }
 
   handleFirstNameChange(e) {
-    console.log(e.target.value);
     this.setState({
       firstName: e.target.value,
       firstNameTouched: true
@@ -73,11 +73,16 @@ class RsvpAddName extends React.Component {
       lastNameTouched: true
     });
   }
-  handleMealSelect(e) {
+  handleCommentAdditions(e) {
     this.setState({
-      meal: e.target.value
+      comments: e.target.value
     });
   }
+  // handleMealSelect(e) {
+  //   this.setState({
+  //     meal: e.target.value
+  //   });
+  // }
 
   // handleHotelSelect(e) {
   //   this.setState({
@@ -94,7 +99,7 @@ class RsvpAddName extends React.Component {
   }
 
   decrementStep() {
-    if(this.state.step > 1){
+    if (this.state.step > 1) {
       this.setState(prevState => ({
         step: prevState.step - 1
       }));
@@ -103,13 +108,13 @@ class RsvpAddName extends React.Component {
 
   declineRsvp() {
     const { firstName, lastName } = this.state;
-    this.props.submitRsvp(firstName, lastName, false);
+    this.props.submitRsvp({firstName, lastName, isAttending:false});
     this.props.returnToMain();
   }
 
   submitRsvp() {
-    const { firstName, lastName, meal } = this.state;
-    this.props.submitRsvp(firstName, lastName, true, meal);
+    const { firstName, lastName, comments } = this.state;
+    this.props.submitRsvp({firstName, lastName, isAttending:true, comments});
     this.props.returnToMain();
   }
 
@@ -120,7 +125,7 @@ class RsvpAddName extends React.Component {
       firstName,
       firstNameTouched,
       lastName,
-      lastNameTouched,
+      lastNameTouched
     } = this.state;
 
     const enterName = () => (
@@ -151,7 +156,7 @@ class RsvpAddName extends React.Component {
         <div className="action-button">
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             onClick={this.incrementStep}
             disabled={!firstName || !lastName}
           >
@@ -173,7 +178,7 @@ class RsvpAddName extends React.Component {
           <Button
             onClick={this.incrementStep}
             variant="contained"
-            color="secondary"
+            color="primary"
             autoFocus
           >
             I'm Going
@@ -181,8 +186,6 @@ class RsvpAddName extends React.Component {
         </DialogActions>
       </div>
     );
-
-    
 
     const renderContent = () => {
       switch (step) {
@@ -200,17 +203,13 @@ class RsvpAddName extends React.Component {
     return <div>{renderContent()}</div>;
   }
 
-  choosePreferences = (props) => {
+  choosePreferences = props => {
     const { classes } = props;
-    const {
-      firstName,
-      lastName,
-      meal
-    } = this.state;
-    return(
-    <div>
-      <div className="full-name">{`${firstName} ${lastName}`}</div>
-      <FormControl component="fieldset" className={classes.formControl}>
+    const { firstName, lastName, restrictions } = this.state;
+    return (
+      <div>
+        <div className="full-name">{`${firstName} ${lastName}`}</div>
+        {/* <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">
           Select Your Meal
         </FormLabel>
@@ -230,28 +229,39 @@ class RsvpAddName extends React.Component {
           />
         </RadioGroup>
         <div className="meal-question">
-        {/* <FormControlLabel
+        <FormControlLabel
           control={<Checkbox onChange={this.handleHotelSelect} />}
           label="Will you need assistance finding a hotel?"
           labelPlacement="start"
-        /> */}
+        />
         </div>
-      </FormControl>
-
-      <DialogActions>
-      <p onClick={this.decrementStep}>Back</p>
-        <Button
-          onClick={this.submitRsvp}
-          variant="contained"
-          color="secondary"
-          disabled={!meal}
-          autoFocus
-        >
-          Submit
-        </Button>
-      </DialogActions>
-    </div>
-  );}
+      </FormControl> */}
+      <div className={'form-description'}>Please let us know if you have any food allergies or dietary restrictions.</div>
+        <form>
+          <TextField
+            id="outlined-multiline-flexible"
+            multiline
+            fullWidth
+            label="Dietary Restrictions"
+            onChange={this.handleCommentAdditions}
+            margin="normal"
+            variant="outlined"
+          />
+        </form>
+        <DialogActions>
+          <p onClick={this.decrementStep}>Back</p>
+          <Button
+            onClick={this.submitRsvp}
+            variant="contained"
+            color="primary"
+            autoFocus
+          >
+            {this.state.comments? 'Submit': 'No Restrictions'}
+          </Button>
+        </DialogActions>
+      </div>
+    );
+  };
 }
 
 RsvpAddName.propTypes = {

@@ -39,12 +39,17 @@
     padding: 1em;
     margin: 0;
     flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
 }
-.web-bar-list .web-bar-item{
+/* .web-bar-list .web-bar-item{
     display: inline-block;
     margin: 0 2em;
     
-}
+} */
 .web-bar-list .web-bar-item a{
     text-decoration: none;
     color: #fff;
