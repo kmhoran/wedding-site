@@ -25,7 +25,7 @@ class PhotobarStore {
     this.onDisplay = [];
     this.job = null;
     this.setImages();
-    console.log(toJS(this.imageSet))
+    console.log(toJS(this.imageSet));
     autorun(() => {
       console.log("autorun! ");
     });
@@ -35,6 +35,10 @@ class PhotobarStore {
     return (
       this.imageSet && this.lastIndexSeen !== null && this.onDisplay.length > 0
     );
+  }
+
+  get jsImages() {
+    return toJS(this.images);
   }
 
   setImages = () => {
@@ -115,16 +119,16 @@ class PhotobarStore {
     const removedFromView = this.images[nextToUpdateId].onDisplay;
     if (this.images[nextToUpdateId].showA) {
       newImages[nextToUpdateId] = {
-        a: {...this.images[nextToUpdateId].a},
+        a: { ...this.images[nextToUpdateId].a },
         showA: false,
-        b: {...this.imageSet[nextIndex]},
+        b: { ...this.imageSet[nextIndex] },
         onDisplay: nextIndex
       };
     } else {
       newImages[nextToUpdateId] = {
-        b: {...this.images[nextToUpdateId].b},
+        b: { ...this.images[nextToUpdateId].b },
         showA: true,
-        a: {...this.imageSet[nextIndex]},
+        a: { ...this.imageSet[nextIndex] },
         onDisplay: nextIndex
       };
     }
@@ -154,7 +158,8 @@ decorate(PhotobarStore, {
   images: observable,
   activate: action,
   deactivate: action,
-  loaded: computed
+  loaded: computed,
+  jsImages: computed
 });
 
 const photobarStore = new PhotobarStore();

@@ -29,8 +29,8 @@ const styles = theme => ({
   },
   menuButton: {},
   icon: {
-    margin: theme.spacing.unit * 0.7,
-    fontSize: "1em"
+    // margin: theme.spacing.unit * 0.7,
+    fontSize: "0.7em"
   },
   list: {
     width: 250
@@ -122,8 +122,8 @@ class MobileBar extends React.Component {
     return (
       <div className={classes.root} id="mobile-bar">
         <AppBar position="static" color="primary" position="fixed">
-          <Toolbar>
-            <MenuLogo />
+          <Toolbar variant={'dense'}>
+            <MenuLogo short/>
             <Typography variant="h6" color="inherit" className={classes.grow}/>
             <IconButton
               className={classes.menuButton}

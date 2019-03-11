@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import WeddingPage from "./components/pages/theWedding/weddingPage";
+import VenuePage from './components/pages/theWedding/venuePage'
 import OurStoryPage from "./components/pages/ourStory/ourStoryPage";
 import RegistryPage from "./components/pages/registry/registryPage";
 import RegisterItemDetail from "./components/pages/registry/registeredItemDetail";
@@ -19,6 +20,7 @@ const App = props => {
       <Switch>
         <Route exact path={routes.Home} component={Home} />
         <Route path={routes.TheWedding} component={WeddingPage} />
+        <Route path={`${routes.Venue}/:id`} component={VenuePage} />
         <Route path={routes.OurStory} component={OurStoryPage} />
         <Route path={`${routes.Registry}/:id`} component={RegisterItemDetail} />
         <Route path={routes.Registry} component={RegistryPage} />
@@ -28,5 +30,9 @@ const App = props => {
     </Provider>
   );
 };
+
+function TESTROUTE (props) {
+  return (<h1>TEST</h1>)
+}
 
 export default App;

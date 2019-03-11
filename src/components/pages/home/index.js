@@ -22,14 +22,10 @@ class Home extends Component {
         <MobileBar />
         <Hero imageSrc="./assets/images/hero.jpg" text="Katie & Kevin 2020" />
         <WebBar />
-        <ViewCell height="69">
-          <EventOverview />
-        </ViewCell>
-        <ViewCell height="70">
-          <StoryCell />
-        </ViewCell>
+        <EventOverview />
+        <StoryCell />
         <LocationTileBar />
-        <PhotoBar/>
+        <PhotoBar />
         <Footer />
       </div>
     );

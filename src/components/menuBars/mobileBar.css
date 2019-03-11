@@ -1,6 +1,6 @@
 #mobile-bar::after{
     content:"";
-min-height: 60px;
+min-height: 30px;
 width: 100%;
 display: block
 }

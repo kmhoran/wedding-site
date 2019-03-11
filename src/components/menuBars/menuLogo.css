@@ -28,3 +28,12 @@
 .menu-logo.light .menu-logo-text {
   color: #000;
 }
+.menu-logo.short{
+font-size: 1em;
+}
+
+@media (max-width: 889px) { 
+  .menu-logo{
+    font-size: 1em;
+    }
+}

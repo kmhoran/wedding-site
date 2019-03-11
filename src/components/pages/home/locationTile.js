@@ -2,6 +2,8 @@ import React from "react";
 import "./locationTile.css";
 import photos from "../../../constants/photos";
 import routes from "../../../constants/routes";
+import {venueIds} from "../../../constants/routes";
+import {ceremony, reception} from '../theWedding/venueInfo';
 import { Link } from "react-router-dom";
 
 const testImage =
@@ -10,17 +12,17 @@ const testImage =
 const locations = [
   {
     key: "ceremony",
-    messge: "St. Louis Church",
+    messge: ceremony.title,
     button: "Preview the Ceremony",
-    image: photos.stLouis,
-    to: routes.Cincinnati
+    image: ceremony.image,
+    to: ceremony.to
   },
   {
     key: "reception",
-    messge: "The Cincinnati Club",
+    messge: reception.title,
     button: "Preview the Reception",
-    image: photos.cincinnatiClub,
-    to: routes.Cincinnati
+    image: reception.image,
+    to: reception.to
   },
   {
     key: "cincy",

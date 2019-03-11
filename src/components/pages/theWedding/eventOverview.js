@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import RsvpDialog from "../../rsvp";
-
+import {ceremony, reception} from './venueInfo';
 import "./eventOverview.css";
+import WhenAndWhere from './whenAndWhere';
 
 const EventSiteCard = props => {
   return (
@@ -10,14 +11,15 @@ const EventSiteCard = props => {
       <div className="event-name">{props.eventName}</div>
       {/* <Button>Get Directions</Button> */}
       <div className="event-site-title">{props.siteTitle}</div>
-      <div className="event-site-address  info-line">
+      {/* <div className="event-site-address  info-line">
         <i class="fas fa-map-marker-alt info-line-icon" />
         <div className="info-line-content">{props.address}</div>
       </div>
       <div className="event-site-time  info-line">
         <i class="far fa-clock" />
         <div className="info-line-content">{props.time}</div>
-      </div>
+      </div> */}
+      <WhenAndWhere when={props.time} where={props.address}/>
     </div>
   );
 };
@@ -37,15 +39,15 @@ const EventOverview = props => {
       </div>
       <EventSiteCard
         eventName="Ceremony"
-        siteTitle="St. Louis Catholic Church"
-        address="29 E 8th St, Cincinnati, OH 45202"
-        time="4:45 pm"
+        siteTitle={ceremony.fullTitle || ceremony.title}
+        address={ceremony.address}
+        time={ceremony.time}
       />
       <EventSiteCard
         eventName="Reception"
-        siteTitle="The Cincinnati Club"
-        address="4300, 30 Garfield Pl, Cincinnati, OH 45202"
-        time="5:45 pm"
+        siteTitle={reception.fullTitle || reception.title}
+        address={reception.address}
+        time={reception.time}
       />
     </div>
   );

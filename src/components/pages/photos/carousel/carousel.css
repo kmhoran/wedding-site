@@ -1,0 +1,113 @@
+/* .thumbnails-collection{
+
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: none;
+   justify-content: space-evenly;
+   
+}
+.thumbnail-frame{
+    height: 100px;
+    width: 150px;
+    max-height: calc(100vw/6 - 30px);
+    max-width: calc(25vw);
+    overflow: hidden;
+    position: relative;
+    margin: 5px 0;
+}
+.thumbnail-image{
+    width: 100%;
+    position: relative;
+
+} */
+.main-image-area{
+    user-select: none;
+    /* border: 1px solid black; */
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.main-image-frame{
+    /* border: 1px solid red; */
+    height: 85vh;
+    display: flex;
+}
+.main-image-area .main-image{
+    width: auto;
+    margin: auto;
+    height: 100%;
+    transition: all 1s;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.6);
+}
+
+.steppers{
+    min-height: 85vh;
+    min-width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    /* border: 1px solid red; */
+}
+.stepper-pane{
+    flex-grow: 1;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+}
+.stepper-pane .icon{
+    font-size: 5em;
+    color: #fff;
+    margin: 3em;
+    transition: all 0.3s;
+    opacity: 0;
+}
+.stepper-pane .icon:hover{
+    color: #000;
+}
+.previous-pane{
+    justify-content: start;
+    /* border: 1px solid aqua; */
+}
+.previous-pane:hover .icon{
+    opacity: 1
+}
+.next-pane{
+    justify-content: end;
+    /* border: 1px solid yellow; */
+
+}
+.next-pane:hover .icon{
+    opacity: 1
+}
+/* .main-image-area.portrait .main-image{
+    width: auto;
+    height: 100%;
+} */
+@media(max-width: 400px){
+    .thumbnails-collection{
+        display: none;
+    }
+    .main-image-area .main-image{
+        width: 100%;
+        height: auto;
+    }
+    .main-image-frame{
+        height: 80vh;
+    }
+    .main-image-area{
+        height: 80vh;
+    }
+}
+@media(max-width: 889px){
+    .stepper-pane .icon{
+        font-size: 3em;
+        margin: 1em;
+        text-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+    }
+}

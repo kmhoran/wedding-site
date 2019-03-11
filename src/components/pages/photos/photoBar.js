@@ -23,17 +23,17 @@ const PhotoBarView = inject("photobarStore")(
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-              style={ photobarStore.images[0].a.barAdjustment}
-                src={ photobarStore.images[0].a.image}
+              style={ photobarStore.jsImages[0].a.barAdjustment}
+                src={ photobarStore.jsImages[0].a.image}
                 className={`bar-image ${
-                  photobarStore.images[0].showA ? "" : "hidden"
+                  photobarStore.jsImages[0].showA ? "" : "hidden"
                 }`}
               />
               <img
-              style={ photobarStore.images[0].b.barAdjustment}
-                src={ photobarStore.images[0].b.image}
+              style={ photobarStore.jsImages[0].b.barAdjustment}
+                src={ photobarStore.jsImages[0].b.image}
                 className={`bar-image ${
-                  ! photobarStore.images[0].showA ? "" : "hidden"
+                  ! photobarStore.jsImages[0].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -41,17 +41,17 @@ const PhotoBarView = inject("photobarStore")(
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-                style={ photobarStore.images[1].a.barAdjustment}
-                src={ photobarStore.images[1].a.image}
+                style={ photobarStore.jsImages[1].a.barAdjustment}
+                src={ photobarStore.jsImages[1].a.image}
                 className={`bar-image ${
-                  photobarStore.images[1].showA ? "" : "hidden"
+                  photobarStore.jsImages[1].showA ? "" : "hidden"
                 }`}
               />
               <img
-                style={ photobarStore.images[1].b.barAdjustment}
-                src={ photobarStore.images[1].b.image}
+                style={ photobarStore.jsImages[1].b.barAdjustment}
+                src={ photobarStore.jsImages[1].b.image}
                 className={`bar-image ${
-                  ! photobarStore.images[1].showA ? "" : "hidden"
+                  ! photobarStore.jsImages[1].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -61,17 +61,17 @@ const PhotoBarView = inject("photobarStore")(
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-                style={ photobarStore.images[2].a.barAdjustment}
-                src={ photobarStore.images[2].a.image}
+                style={ photobarStore.jsImages[2].a.barAdjustment}
+                src={ photobarStore.jsImages[2].a.image}
                 className={`bar-image ${
-                  photobarStore.images[2].showA ? "" : "hidden"
+                  photobarStore.jsImages[2].showA ? "" : "hidden"
                 }`}
               />
               <img
-                style={ photobarStore.images[2].b.barAdjustment}
-                src={ photobarStore.images[2].b.image}
+                style={ photobarStore.jsImages[2].b.barAdjustment}
+                src={ photobarStore.jsImages[2].b.image}
                 className={`bar-image ${
-                  ! photobarStore.images[2].showA ? "" : "hidden"
+                  ! photobarStore.jsImages[2].showA ? "" : "hidden"
                 }`}
               />
             </Link>
@@ -79,17 +79,17 @@ const PhotoBarView = inject("photobarStore")(
           <div className="bar-cell">
             <Link to={routes.Photos}>
               <img
-                style={ photobarStore.images[3].a.barAdjustment}
-                src={ photobarStore.images[3].a.image}
+                style={ photobarStore.jsImages[3].a.barAdjustment}
+                src={ photobarStore.jsImages[3].a.image}
                 className={`bar-image ${
-                  photobarStore.images[3].showA ? "" : "hidden"
+                  photobarStore.jsImages[3].showA ? "" : "hidden"
                 }`}
               />
               <img
-                style={ photobarStore.images[3].b.barAdjustment}
-                src={ photobarStore.images[3].b.image}
+                style={ photobarStore.jsImages[3].b.barAdjustment}
+                src={ photobarStore.jsImages[3].b.image}
                 className={`bar-image ${
-                  ! photobarStore.images[3].showA ? "" : "hidden"
+                  ! photobarStore.jsImages[3].showA ? "" : "hidden"
                 }`}
               />
             </Link>
