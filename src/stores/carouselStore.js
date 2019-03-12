@@ -13,10 +13,12 @@ class CarouselStore {
   selectedIndex;
   imageSet;
   job;
+  isRunning;
   constructor() {
     this.selectedIndex = 0;
     this.imageSet = gallarySet;
     this.job = null;
+    this.isRunning = false;
     // autorun(() => {
     // });
   }
@@ -29,11 +31,12 @@ class CarouselStore {
     return toJS(this.imageSet[this.selectedIndex]);
   }
 
-  get thumbnails() {
-    if (this.selectedIndex == null) return null;
-    const set = toJS(this.imageSet);
-    return set.slice(0, 5);
-  }
+  // get thumbnails() {
+  //   if (this.selectedIndex == null) return null;
+  //   const set = toJS(this.imageSet);
+  //   return set.slice(0, 5);
+  // }
+
 
   stepRight = () => {
     if (this.selectedIndex == null || !this.imageSet.length) return;
@@ -45,15 +48,20 @@ class CarouselStore {
   }
 
   startSlideshow = () => {
-    console.log("carousel Activated");
-    // this.job = setInterval(() => {
-    //   this.shuffleImages();
-    // }, 5000);
+    // console.log("carousel Activated");
+    if(!this.isRunning){
+      this.job = setInterval(() => {
+        this.stepRight();
+      }, 3000);
+      this.isRunning = true;
+    }
+    
   };
 
   stopSlideshow = () => {
-    console.log("carousel Deactivated");
-    //clearInterval(this.job);
+    // console.log("carousel Deactivated");
+    clearInterval(this.job);
+    this.isRunning = false;
   };
 }
 
@@ -66,7 +74,7 @@ decorate(CarouselStore, {
   stopSlideshow: action,
   loaded: computed,
   selectedImage: computed,
-  thumbnails: computed
+  isRunning: observable
 });
 
 const carouselStore = new CarouselStore();

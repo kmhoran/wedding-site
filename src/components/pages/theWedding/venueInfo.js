@@ -20,7 +20,7 @@ const veunueInfo = {
     id: "cincinnati-club",
     title: "The Cincinnati Club",
     time: "6:00 pm",
-    address: "29 E 8th St, Cincinnati, OH 45202",
+    address: "4300, 30 Garfield Pl, Cincinnati, OH 45202",
     description: `Lorem ipsum dolor sit amet, sed movet altera te, qui officiis quaerendum te, ei nibh duis mei. His no quando consequuntur, est ipsum mundi eu. Hinc vero usu ei, eius nusquam erroribus nec no, eos labitur sententiae adversarium in. Case cibo impetus mel id, et eum postea repudiare.
 
     Quas periculis ut est. Meis admodum explicari eam eu, veniam consequuntur eam ei. Eu vim omnis munere, soluta hendrerit democritum mel id. An ridens causae cetero his, no duis invenire nec, pro ex duis solum. Deleniti perpetua vim at, debet ubique omittantur at vim.
