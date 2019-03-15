@@ -5,8 +5,8 @@ import "./App.css";
 import WeddingPage from "./components/pages/theWedding/weddingPage";
 import VenuePage from './components/pages/theWedding/venuePage'
 import OurStoryPage from "./components/pages/ourStory/ourStoryPage";
-import RegistryPage from "./components/pages/registry/registryPage";
-import RegisterItemDetail from "./components/pages/registry/registeredItemDetail";
+import RegistryPage from "./components/pages/registry/registryPage/registryPage";
+import RegisterItemDetail from "./components/pages/registry/registeredItemDetail/registeredItemDetail";
 import Home from "./components/pages/home";
 import PhotoPage from "./components/pages/photos/photoPage";
 import CincinnatiPage from "./components/pages/cincinnati/cincinnatiPage";

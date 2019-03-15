@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Calligraffitti');
+
+.honeymoon-logo{
+    background-color: rgb(238, 107, 183);
+    padding: 0.2em 1em;
+    display: inline-block;
+    margin: 5px 0;
+    border-radius: 999px;
+   
+}
+.honeymoon-logo-text{
+    font-family: 'Calligraffitti', cursive;
+    color: #fff;
+    font-size: 1.2em;
+}

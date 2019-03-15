@@ -8,4 +8,6 @@ registry-page-frame{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: stretch;
+    margin: 10px 0;
 }

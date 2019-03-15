@@ -1,12 +1,12 @@
 import React from "react";
-import WebBar from "../../menuBars/webBar";
-import MobileBar from "../../menuBars/mobileBar";
-import Hero from "../../hero";
-import RegistryCard from "./registryCard";
+import WebBar from "../../../menuBars/webBar";
+import MobileBar from "../../../menuBars/mobileBar";
+import Hero from "../../../hero";
+import RegistryCard from "../registryCard/registryCard";
 import "./registryPage.css";
-import { items } from "./regiser";
+import { items } from "../regiser";
 
-import Footer from '../footer';
+import Footer from '../../footer';
 
 class RegistryPage extends React.Component {
   componentDidMount() {
@@ -17,8 +17,7 @@ class RegistryPage extends React.Component {
       <div className="registry-page-frame">
         <MobileBar />
         <WebBar />
-        <Hero imageSrc="./assets/images/roses.jpeg" text="Registry" />
-        <h1>Register</h1>
+        <Hero imageSrc="./assets/images/roses.jpeg" height="44vh" text="Registry" />
         <div className="card-frame">
           {items.map(item => {
             return <RegistryCard item={item} />;

@@ -1,0 +1,22 @@
+.registry-progress{
+    color: #000;
+}
+.count-desired {
+    margin: 10px 0;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+  }
+  .count-desired-text {
+    margin: 0 10px;
+  }
+  .fundraiser {
+    margin: 10px 0;
+    text-transform: uppercase;
+    word-spacing: 7px;
+    
+  }
+  .red {
+    color: red;
+    font-weight: 700;
+  }
