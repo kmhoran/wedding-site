@@ -3,7 +3,8 @@ import WebBar from "../../menuBars/webBar";
 import MobileBar from "../../menuBars/mobileBar";
 import Hero from "../../hero";
 import ViewCell from "../viewCell";
-import Footer from '../footer';
+import Footer from "../footer";
+import photos from "../../../constants/photos";
 
 import "./ourStoryPage.css";
 
@@ -17,7 +18,7 @@ class OurStoryPage extends React.Component {
         <MobileBar />
         <WebBar />
         <Hero
-          imageSrc="./assets/images/chenonceau.jpg"
+          imageSrc={photos.chenonceauxHero}
           text="Once upon a time in France..."
           height="100vh"
         />
@@ -27,7 +28,7 @@ class OurStoryPage extends React.Component {
         <ViewCell height="80">
           <h1>Our Story</h1>
         </ViewCell>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

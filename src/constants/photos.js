@@ -6,7 +6,10 @@ export default {
   stLouis: "https://farm8.staticflickr.com/7858/40336507943_ae49c7a2c3_z.jpg",
   cincy: "https://farm8.staticflickr.com/7875/40336598623_37ce8532c9_z.jpg",
   cincyHero:
-    "https://upload.wikimedia.org/wikipedia/commons/0/00/Cincinnati_Oh_So_Flashy_%28195470819%29.jpeg"
+    "https://upload.wikimedia.org/wikipedia/commons/0/00/Cincinnati_Oh_So_Flashy_%28195470819%29.jpeg",
+  rosesHero: 'https://farm8.staticflickr.com/7868/46492918535_e74cbd0d84_h.jpg',
+  chenonceauxHero: 'https://farm8.staticflickr.com/7806/46492918695_0a63739acb_h.jpg',
+  weddingHero: 'https://farm8.staticflickr.com/7894/46492918665_046bf4c5e5_h.jpg'
 };
 
 const gallarySet = [

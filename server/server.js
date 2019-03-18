@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import cluster from "cluster";
 import os from "os";
+import routes from './routes';
 
 const numCPUs = os.cpus().length;
 
@@ -27,10 +28,12 @@ if (cluster.isMaster) {
   // serever
   const app = express();
 
-  const staticFilePath = app.use(express.static(path.resolve(__dirname, "ui")));
-
+  app.use('/api/v1/',routes);
   // remaining requests are sent to the react app
+  app.use('/static',express.static(path.join(__dirname, "ui", "static")))
   app.get("*", function(request, response) {
+    console.log('trying to get html')
+    console.log(path.resolve(__dirname, "ui", "index.html"))
     response.sendFile(path.resolve(__dirname, "ui", "index.html"));
   });
 

@@ -7,6 +7,7 @@ import "./registryPage.css";
 import { items } from "../regiser";
 
 import Footer from '../../footer';
+import photos from '../../../../constants/photos';
 
 class RegistryPage extends React.Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class RegistryPage extends React.Component {
       <div className="registry-page-frame">
         <MobileBar />
         <WebBar />
-        <Hero imageSrc="./assets/images/roses.jpeg" height="44vh" text="Registry" />
+        <Hero imageSrc={photos.rosesHero} height="50vh" text="Registry" />
         <div className="card-frame">
           {items.map(item => {
             return <RegistryCard item={item} />;
