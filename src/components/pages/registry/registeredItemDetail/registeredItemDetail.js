@@ -37,15 +37,15 @@ const styles = theme => ({
     justifyContent: "center"
   },
   title: {
-    fontSize: '1.5em',
-    textAlign: 'center',
-    paddingBottom: '5px'
+    fontSize: "1.5em",
+    textAlign: "center",
+    paddingBottom: "5px"
   },
   body: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-    flexWrap: 'wrap'
+    flexWrap: "wrap"
   },
   honeymoon: {
     backgroundColor: "rgb(255, 200, 232)"
@@ -122,7 +122,7 @@ class RegisteredItemDetail extends React.Component {
             </Button>
           </Link>
           <Paper className={rootClasses} elevation={3}>
-          <div className={classes.title}>{item.name}</div>
+            <div className={classes.title}>{item.name}</div>
             <div className={classes.body}>
               <div class={classes.imageEntourage}>
                 <div className={classes.imageFrame}>

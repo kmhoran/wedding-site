@@ -2,7 +2,7 @@
   cursor: pointer;
 }
 .the-paper {
-    min-height: 10em;
+  min-height: 10em;
   -webkit-transition: height 2s; /* Safari */
   transition: height 2s;
 }

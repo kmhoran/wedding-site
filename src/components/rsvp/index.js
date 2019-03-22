@@ -14,7 +14,7 @@ import Icon from "@material-ui/core/Icon";
 import classNames from "classnames";
 
 import RsvpAddName from "./rsvpAddName";
-import RsvpUpdateGuest from "./rsvpUpdateGuest";
+import RsvpUpdateRsvp from "./rsvpUpdateRsvp";
 
 import "./index.css";
 
@@ -27,9 +27,9 @@ const RsvpDialogView = inject("rsvpStore")(
     class RsvpDialog extends React.Component {
       state = {
         open: false,
-        addingGuest: false,
-        updatingGuest: false,
-        highlightedGuest: null
+        addingRsvp: false,
+        updatingRsvp: false,
+        highlightedRsvp: null
       };
       constructor(props) {
         super(props);
@@ -45,9 +45,9 @@ const RsvpDialogView = inject("rsvpStore")(
         const { rsvpStore } = this.props;
         this.setState({
           open: true,
-          addingGuest: rsvpStore.guests.length == 0,
-          updatingGuest: false,
-          highlightedGuest: null
+          addingRsvp: rsvpStore.rsvps.length == 0,
+          updatingRsvp: false,
+          highlightedRsvp: null
         });
       };
 
@@ -60,102 +60,103 @@ const RsvpDialogView = inject("rsvpStore")(
 
       enterNameAddSteps = () => {
         this.setState({
-          addingGuest: true,
-          updatingGuest: false,
-          highlightedGuest: null
+          addingRsvp: true,
+          updatingRsvp: false,
+          highlightedRsvp: null
         });
       };
 
-      handleRsvpSubmit = (guestObject) => {
+      handleRsvpSubmit = rsvpObject => {
         const { rsvpStore } = this.props;
-        rsvpStore.saveGuest(guestObject);
+        rsvpStore.saveRsvp(rsvpObject);
       };
 
       enterAddNameFlow = () => {
         this.setState({
-          addingGuest: true,
-          updatingGuest: false,
-          highlightedGuest: null
+          addingRsvp: true,
+          updatingRsvp: false,
+          highlightedRsvp: null
         });
       };
 
       returnToMain = () => {
         this.setState({
-          addingGuest: false,
-          updatingGuest: false,
-          highlightedGuest: null
+          addingRsvp: false,
+          updatingRsvp: false,
+          highlightedRsvp: null
         });
       };
 
       exitFlows = () => {
         this.setState({
-          addingGuest: false,
-          updatingGuest: false,
-          highlightedGuest: null
+          addingRsvp: false,
+          updatingRsvp: false,
+          highlightedRsvp: null
         });
-      }
+      };
 
-      enterUpdateGuestFlow = id => {
-        const highlightedGuest = this.props.rsvpStore.guests.filter(g => {
+      enterUpdateRsvpFlow = id => {
+        const highlightedRsvp = this.props.rsvpStore.rsvps.filter(g => {
           return g.id === id;
         })[0];
         this.setState({
-          addingGuest: false,
-          updatingGuest: true,
-          highlightedGuest
+          addingRsvp: false,
+          updatingRsvp: true,
+          highlightedRsvp
         });
       };
 
       render() {
         const { fullScreen, children, rsvpStore } = this.props;
-        const { addingGuest, updatingGuest, highlightedGuest } = this.state;
+        const { addingRsvp, updatingRsvp, highlightedRsvp } = this.state;
         if (!rsvpStore) return <div>Loading..</div>;
 
         const content = () => {
           return (
             <div>
-              <div className={"guest-collection"}>
-                {rsvpStore.guests.map(guest => (
-                  <div 
-                      key={guest.id} 
-                      className={"guest-tile"}
-                      onClick={() => {this.enterUpdateGuestFlow(guest.id)}}>
-                    <div className={"guest-name"}>{`${guest.firstName} ${
-                      guest.lastName
+              <div className={"rsvp-collection"}>
+                {rsvpStore.rsvps.map(rsvp => (
+                  <div
+                    key={rsvp.id}
+                    className={"rsvp-tile"}
+                    onClick={() => {
+                      this.enterUpdateRsvpFlow(rsvp.id);
+                    }}
+                  >
+                    <div className={"rsvp-name"}>{`${rsvp.firstName} ${
+                      rsvp.lastName
                     }`}</div>
                     <div>
                       <div
                         className={classNames(
-                          "guest-attending",
+                          "rsvp-attending",
                           "icon-line",
-                          guest.isAttending ? "accept" : "reject"
+                          rsvp.isAttending ? "accept" : "reject"
                         )}
                       >
-                        <div className={"guest-attending-icon icon"}>
+                        <div className={"rsvp-attending-icon icon"}>
                           <Icon
                             className={classNames(
-                              guest.isAttending
-                                ? "fas fa-check"
-                                : "fas fa-times"
+                              rsvp.isAttending ? "fas fa-check" : "fas fa-times"
                             )}
                           />
                         </div>
-                        <div className={"guest-attending-text"}>
-                          {guest.isAttending ? "Attending" : "Not Attending"}
+                        <div className={"rsvp-attending-text"}>
+                          {rsvp.isAttending ? "Attending" : "Not Attending"}
                         </div>
                       </div>
                     </div>
-                    {guest.isAttending && guest.comments && (
+                    {rsvp.isAttending && rsvp.comments && (
                       <div>
-                        <div
-                          className={classNames(
-                            "icon-line",
-                            "guest-meal")}
-                        >
-                          <div className={"guest-meal-icon icon"}>
-                            <Icon className={classNames("fas fa-drumstick-bite")} />
+                        <div className={classNames("icon-line", "rsvp-meal")}>
+                          <div className={"rsvp-meal-icon icon"}>
+                            <Icon
+                              className={classNames("fas fa-drumstick-bite")}
+                            />
                           </div>
-                          <div className={"guest-meal-name"}>{guest.comments}</div>
+                          <div className={"rsvp-meal-name"}>
+                            {rsvp.comments}
+                          </div>
                         </div>
                       </div>
                     )}
@@ -172,7 +173,7 @@ const RsvpDialogView = inject("rsvpStore")(
                   color="primary"
                   autoFocus
                 >
-                  Add Another Guest
+                  Add Another Rsvp
                 </Button>
               </DialogActions>
             </div>
@@ -202,22 +203,22 @@ const RsvpDialogView = inject("rsvpStore")(
                 </Button>
               </div>
               <DialogTitle id="responsive-dialog-title">
-                {rsvpStore.guests.length == 0 || addingGuest
+                {rsvpStore.rsvps.length == 0 || addingRsvp
                   ? "Thank you for your RSVP"
                   : "Let us know if your plans have changed."}
               </DialogTitle>
               <DialogContent>
                 <DialogContentText>
-                  {rsvpStore.guests.length == 0 || addingGuest ? (
+                  {rsvpStore.rsvps.length == 0 || addingRsvp ? (
                     <RsvpAddName
                       submitRsvp={this.handleRsvpSubmit}
                       returnToMain={this.returnToMain}
                     />
-                  ) : rsvpStore.guests.length > 0 &&
-                    updatingGuest &&
-                    highlightedGuest ? (
-                    <RsvpUpdateGuest
-                      guest={highlightedGuest}
+                  ) : rsvpStore.rsvps.length > 0 &&
+                    updatingRsvp &&
+                    highlightedRsvp ? (
+                    <RsvpUpdateRsvp
+                      rsvp={highlightedRsvp}
                       submitRsvp={this.handleRsvpSubmit}
                       exitUpdate={this.exitFlows}
                     />

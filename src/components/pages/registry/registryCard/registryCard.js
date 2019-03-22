@@ -7,10 +7,9 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import RegistryProgress from '../registryProgress/registryProgress';
-import HoneymoonLogo from '../honeymoonLogo/honeymoonLogo';
+import RegistryProgress from "../registryProgress/registryProgress";
+import HoneymoonLogo from "../honeymoonLogo/honeymoonLogo";
 import routes from "../../../../constants/routes";
-
 
 const styles = {
   cardLink: {
@@ -66,8 +65,7 @@ const styles = {
   fundraiser: {
     margin: "10px 0",
     textTransform: "uppercase",
-    wordSpacing: "7px",
-    
+    wordSpacing: "7px"
   },
   red: {
     color: "red",
@@ -116,7 +114,7 @@ function RegistryCard(props) {
               $ {item.price}
             </Typography>
           )}
-          <RegistryProgress item={item}/>
+          <RegistryProgress item={item} />
         </CardContent>
         <CardActions className={classes.cardActions}>
           {/* <Link to={routes.Registry + "/" + item.id}> */}
@@ -138,8 +136,6 @@ function RegistryCard(props) {
     </Link>
   );
 }
-
-
 
 RegistryCard.propTypes = {
   classes: PropTypes.object.isRequired,

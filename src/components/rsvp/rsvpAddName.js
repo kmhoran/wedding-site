@@ -1,17 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 import "./rsvpAddName.css";
 
@@ -108,13 +100,13 @@ class RsvpAddName extends React.Component {
 
   declineRsvp() {
     const { firstName, lastName } = this.state;
-    this.props.submitRsvp({firstName, lastName, isAttending:false});
+    this.props.submitRsvp({ firstName, lastName, isAttending: false });
     this.props.returnToMain();
   }
 
   submitRsvp() {
     const { firstName, lastName, comments } = this.state;
-    this.props.submitRsvp({firstName, lastName, isAttending:true, comments});
+    this.props.submitRsvp({ firstName, lastName, isAttending: true, comments });
     this.props.returnToMain();
   }
 
@@ -236,7 +228,10 @@ class RsvpAddName extends React.Component {
         />
         </div>
       </FormControl> */}
-      <div className={'form-description'}>Please let us know if you have any food allergies or dietary restrictions.</div>
+        <div className={"form-description"}>
+          Please let us know if you have any food allergies or dietary
+          restrictions.
+        </div>
         <form>
           <TextField
             id="outlined-multiline-flexible"
@@ -256,7 +251,7 @@ class RsvpAddName extends React.Component {
             color="primary"
             autoFocus
           >
-            {this.state.comments? 'Submit': 'No Restrictions'}
+            {this.state.comments ? "Submit" : "No Restrictions"}
           </Button>
         </DialogActions>
       </div>

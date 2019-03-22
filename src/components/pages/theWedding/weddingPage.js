@@ -3,7 +3,7 @@ import TheWedding from ".";
 import WebBar from "../../menuBars/webBar";
 import MobileBar from "../../menuBars/mobileBar";
 
-import './weddingPage.css'
+import "./weddingPage.css";
 
 class WeddingPage extends React.Component {
   componentDidMount() {

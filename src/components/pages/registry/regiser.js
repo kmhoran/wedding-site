@@ -66,7 +66,7 @@ export const items = [
     name: "1 Night Stay in Toulouse",
     honeymoon: true,
     image:
-    'https://images.pexels.com/photos/674834/pexels-photo-674834.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      "https://images.pexels.com/photos/674834/pexels-photo-674834.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     price: 120,
     cash: true,
     description: "Lorem Ipsum is simply dummy text.",
@@ -122,7 +122,7 @@ export const items = [
     name: "A visit to Mont Saint Michel",
     honeymoon: true,
     image:
-    'https://images.pexels.com/photos/56592/mont-st-michel-sunset-normandy-france-56592.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      "https://images.pexels.com/photos/56592/mont-st-michel-sunset-normandy-france-56592.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     price: 100,
     cash: true,
     description: "Lorem Ipsum is simply dummy text.",
@@ -130,6 +130,5 @@ export const items = [
     purchaseOutright: true,
     countDesired: 1,
     countReceived: 0
-  },
-  
+  }
 ];

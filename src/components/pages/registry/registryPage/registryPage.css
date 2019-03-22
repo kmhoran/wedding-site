@@ -1,13 +1,13 @@
-registry-page-frame{
-    min-height: 100vh;
-    border: 1px solid green;
+registry-page-frame {
+  min-height: 100vh;
+  border: 1px solid green;
 }
 
-.card-frame{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
-    margin: 10px 0;
+.card-frame {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  margin: 10px 0;
 }

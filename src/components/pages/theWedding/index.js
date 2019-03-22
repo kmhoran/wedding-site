@@ -1,7 +1,7 @@
 import React from "react";
 
 import EventOverview from "./eventOverview";
-import AreaMap from './areaMap';
+import AreaMap from "./areaMap";
 
 import "./index.css";
 
@@ -33,10 +33,10 @@ const TheWedding = props => {
   return (
     <div id="the-wedding-frame">
       <div className="the-wedding-pane">
-          <EventOverview/>
+        <EventOverview />
       </div>
       <div className="the-wedding-pane">
-          <AreaMap/>
+        <AreaMap />
       </div>
     </div>
   );

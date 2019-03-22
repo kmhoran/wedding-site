@@ -14,7 +14,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
-import RsvpDialog from '../rsvp'
+import RsvpDialog from "../rsvp";
 
 import "./mobileBar.css";
 
@@ -38,14 +38,14 @@ const styles = theme => ({
   fullList: {
     width: "auto"
   },
-  linkText:{
+  linkText: {
     tetDecoration: "none",
-    color: 'red'
+    color: "red"
   }
 });
 
 class MobileBar extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.toggleDrawer = this.toggleDrawer.bind(this);
   }
@@ -63,68 +63,65 @@ class MobileBar extends React.Component {
     if (!this.state) return <div />;
     const { classes } = this.props;
 
-    const renderItems = items =>{
+    const renderItems = items => {
       if (!items) return;
-      const menuArray = [];
-      items.forEach((item, index) => {
-        if(!item.rsvpDialog){
-          menuArray.push(
-           <Link underline="none" 
-                  color="text-primary"
-                  to={item.url} >
-              <ListItem 
+      const menuArray = items.map((item, index) => {
+        if (!item.rsvpDialog) {
+          return (
+            <Link underline="none" color="text-primary" to={item.url}>
+              <ListItem
                 onClick={this.toggleDrawer(false)}
                 onKeyDown={this.toggleDrawer(false)}
-                key={index}>
-                <ListItemText  className="mobile-menu-item"
-                primary={item.displayName} />
+                key={index}
+              >
+                <ListItemText
+                  className="mobile-menu-item"
+                  primary={item.displayName}
+                />
               </ListItem>
             </Link>
           );
-        }
-        else{
-          menuArray.push(
+        } else {
+          return (
             <RsvpDialog onClose={this.toggleDrawer(false)}>
-              <ListItem 
-              key={index}>
-                <ListItemText  className="mobile-menu-item"
-                primary={item.displayName} />
+              <ListItem key={index}>
+                <ListItemText
+                  className="mobile-menu-item"
+                  primary={item.displayName}
+                />
               </ListItem>
             </RsvpDialog>
           );
         }
-       
       });
       return menuArray;
-    }
+    };
 
     const sideList = (
       <div className={classes.list}>
         <List>
-          <ListItem button 
-              onClick={this.toggleDrawer(false)}
-              onKeyDown={this.toggleDrawer(false)}
-              dense={true}
-              key="close-arrow">
-              <Icon
-                className={classNames(classes.icon, "fas fa-angle-right")}
-              />
-              Close
+          <ListItem
+            button
+            onClick={this.toggleDrawer(false)}
+            onKeyDown={this.toggleDrawer(false)}
+            dense={true}
+            key="close-arrow"
+          >
+            <Icon className={classNames(classes.icon, "fas fa-angle-right")} />
+            Close
           </ListItem>
         </List>
         <Divider />
-        <List>
-          {renderItems(menuItems)}
-        </List>
+        <List>{renderItems(menuItems)}</List>
       </div>
     );
 
     return (
       <div className={classes.root} id="mobile-bar">
         <AppBar position="static" color="primary" position="fixed">
-          <Toolbar variant={'dense'}>
-            <MenuLogo short/>
-            <Typography variant="h6" color="inherit" className={classes.grow}/>
+          <Toolbar variant={"dense"}>
+            <MenuLogo short />
+            <Typography variant="h6" color="inherit" className={classes.grow} />
             <IconButton
               className={classes.menuButton}
               size="small"
@@ -141,10 +138,7 @@ class MobileBar extends React.Component {
           open={this.state.openDrawer}
           onClose={this.toggleDrawer(false)}
         >
-          <div
-            tabIndex={0}
-            role="button"
-          >
+          <div tabIndex={0} role="button">
             {sideList}
           </div>
         </Drawer>

@@ -1,13 +1,13 @@
-#the-wedding-frame{
-    min-height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction:row;
+#the-wedding-frame {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.the-wedding-pane{
-    min-height: 00%;
-    width: 50%;
-    flex-grow: 1;
-    position: relative;
+.the-wedding-pane {
+  min-height: 00%;
+  width: 50%;
+  flex-grow: 1;
+  position: relative;
 }

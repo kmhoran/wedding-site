@@ -7,10 +7,9 @@ import WebBar from "../menuBars/webBar";
 import "./index.css";
 
 class Hero extends Component {
-
-  constructor(props){
-super(props);
-this.state = {popUp: false}
+  constructor(props) {
+    super(props);
+    this.state = { popUp: false };
   }
   componentDidMount() {
     setTimeout(() => {

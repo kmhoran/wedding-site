@@ -2,8 +2,8 @@ import React from "react";
 import "./locationTile.css";
 import photos from "../../../constants/photos";
 import routes from "../../../constants/routes";
-import {venueIds} from "../../../constants/routes";
-import {ceremony, reception} from '../theWedding/venueInfo';
+import { venueIds } from "../../../constants/routes";
+import { ceremony, reception } from "../theWedding/venueInfo";
 import { Link } from "react-router-dom";
 
 const testImage =

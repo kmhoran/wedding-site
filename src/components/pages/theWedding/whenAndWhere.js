@@ -1,10 +1,10 @@
 import React from "react";
 
-import './whenAndWhere.css'
+import "./whenAndWhere.css";
 
 function WhenAndWhere(props) {
-    if(!(props.when && props.where)) return (<div/>)
-    const{when, where} = props;
+  if (!(props.when && props.where)) return <div />;
+  const { when, where } = props;
   return (
     <div>
       <div className="wnw-where info-line">

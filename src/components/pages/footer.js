@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { menuItems } from "../menuBars/menuContents";
-import MenuLogo from '../menuBars/menuLogo'
+import MenuLogo from "../menuBars/menuLogo";
 
 import "./footer.css";
 
@@ -10,9 +10,8 @@ const Footer = props => {
     <div className="footer-frame">
       <div className="footer-details">
         <div className="footer-detail-pane footer-logo">
-            <MenuLogo color="LIGHT"
-                      className="logo"/>
-            </div>
+          <MenuLogo color="LIGHT" className="logo" />
+        </div>
         <div className="footer-detail-pane footer-info">
           <div className="footer-detail-pane footer-links">
             {menuItems.map(i => {

@@ -1,12 +1,12 @@
-import React from 'react';
-import './viewCell.css'
+import React from "react";
+import "./viewCell.css";
 
 const ViewCell = props => {
-    return (
-      <div className="view-cell" style={{ height: props.height + "vh" }}>
-        {props.children}
-      </div>
-    );
-  };
+  return (
+    <div className="view-cell" style={{ height: props.height + "vh" }}>
+      {props.children}
+    </div>
+  );
+};
 
-  export default ViewCell;
+export default ViewCell;

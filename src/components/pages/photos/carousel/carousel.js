@@ -18,7 +18,7 @@ const CarouselView = inject("carouselStore")(
         this.props.carouselStore.startSlideshow();
       }
 
-      componentWillUnmount(){
+      componentWillUnmount() {
         this.props.carouselStore.stopSlideshow();
       }
 
@@ -65,9 +65,9 @@ const CarouselView = inject("carouselStore")(
         );
       }
 
-      handleActionToggle(){
-        const {carouselStore} = this.props;
-        if(carouselStore.isRunning) carouselStore.stopSlideshow();
+      handleActionToggle() {
+        const { carouselStore } = this.props;
+        if (carouselStore.isRunning) carouselStore.stopSlideshow();
         else carouselStore.startSlideshow();
       }
 

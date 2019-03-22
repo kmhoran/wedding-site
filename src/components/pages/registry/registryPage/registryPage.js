@@ -6,8 +6,8 @@ import RegistryCard from "../registryCard/registryCard";
 import "./registryPage.css";
 import { items } from "../regiser";
 
-import Footer from '../../footer';
-import photos from '../../../../constants/photos';
+import Footer from "../../footer";
+import photos from "../../../../constants/photos";
 
 class RegistryPage extends React.Component {
   componentDidMount() {
@@ -24,7 +24,7 @@ class RegistryPage extends React.Component {
             return <RegistryCard item={item} />;
           })}
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

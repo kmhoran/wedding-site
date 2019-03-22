@@ -9,7 +9,7 @@ import Hero from "../../hero";
 import LocationTileBar from "./locationTile";
 import PhotoBar from "../photos/photoBar";
 import Footer from "../footer";
-import photos from '../../../constants/photos';
+import photos from "../../../constants/photos";
 
 import "./index.css";
 

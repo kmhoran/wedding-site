@@ -1,20 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 
 import "./rsvpUpdateGuest.css";
-
 
 class RsvpUpdateGuest extends React.Component {
   state = {};
@@ -42,7 +32,7 @@ class RsvpUpdateGuest extends React.Component {
   declineRsvp() {
     if (!(this.props && this.props.guest)) return;
     const { id, firstName, lastName } = this.props.guest;
-    this.props.submitRsvp({id, firstName, lastName, isAttending:false});
+    this.props.submitRsvp({ id, firstName, lastName, isAttending: false });
     this.props.exitUpdate();
   }
 
@@ -50,16 +40,21 @@ class RsvpUpdateGuest extends React.Component {
     if (!(this.props && this.props.guest)) return;
     const { id, firstName, lastName } = this.props.guest;
     const { comments } = this.state;
-    this.props.submitRsvp({id, firstName, lastName, isAttending:true, comments});
+    this.props.submitRsvp({
+      id,
+      firstName,
+      lastName,
+      isAttending: true,
+      comments
+    });
     this.props.exitUpdate();
   }
 
   render() {
-    if (!(this.props && this.props.guest)) return <div/>;
+    if (!(this.props && this.props.guest)) return <div />;
     const { guest } = this.props;
     const { firstName, lastName, isAttending } = this.props.guest;
     const { comments } = this.state;
-
 
     return (
       <div>
@@ -83,9 +78,9 @@ class RsvpUpdateGuest extends React.Component {
           />
         </form>
         <DialogActions>
-        <Button color="default" onClick={this.props.exitUpdate}>
-                Cancel
-              </Button>
+          <Button color="default" onClick={this.props.exitUpdate}>
+            Cancel
+          </Button>
 
           {isAttending && (
             <div>

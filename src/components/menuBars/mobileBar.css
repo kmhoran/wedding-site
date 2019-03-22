@@ -1,15 +1,15 @@
-#mobile-bar::after{
-    content:"";
-min-height: 30px;
-width: 100%;
-display: block
+#mobile-bar::after {
+  content: "";
+  min-height: 30px;
+  width: 100%;
+  display: block;
 }
-.mobile-menu-item{
-    text-align: center;
-    text-decoration: none;
+.mobile-menu-item {
+  text-align: center;
+  text-decoration: none;
 }
-@media(min-width: 890px){
-    #mobile-bar{
-        display: none;
-    }
+@media (min-width: 890px) {
+  #mobile-bar {
+    display: none;
+  }
 }

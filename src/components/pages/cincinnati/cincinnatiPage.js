@@ -3,8 +3,8 @@ import WebBar from "../../menuBars/webBar";
 import MobileBar from "../../menuBars/mobileBar";
 import Hero from "../../hero";
 import ViewCell from "../viewCell";
-import Footer from '../footer';
-import photos from '../../../constants/photos'
+import Footer from "../footer";
+import photos from "../../../constants/photos";
 
 import "./cincinnatiPage.css";
 
@@ -28,7 +28,7 @@ class CincinnatiPage extends React.Component {
         <ViewCell height="80">
           <h1>What to do</h1>
         </ViewCell>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

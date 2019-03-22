@@ -1,17 +1,17 @@
-.guest-collection {
+.rsvp-collection {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.guest-tile {
+.rsvp-tile {
   width: 10em;
   margin: 5px;
   padding: 5px;
   transition: all 0.3s;
   cursor: pointer;
 }
-.guest-tile:hover {
+.rsvp-tile:hover {
   box-shadow: 0 0 5px lightgray;
 }
 .icon-line {
@@ -19,32 +19,31 @@
   align-items: flex-start;
 }
 
-.icon-line .icon{
-    margin-right: 1em;
-    font-weight: 700;
-    color: #333;
+.icon-line .icon {
+  margin-right: 1em;
+  font-weight: 700;
+  color: #333;
 }
-.guest-name {
+.rsvp-name {
   font-size: 1.1em;
   font-weight: 700;
 }
-.guest-attending.accept .icon{
-    color: green;
-}
-
-.guest-attending.reject .icon{
-    color: red;
-}
-.guest-meal {
-  text-transform: capitalize;
-}
-.guest-meal-icon {
-
-}
-
-.veg .guest-meal-icon {
+.rsvp-attending.accept .icon {
   color: green;
 }
-.veg .guest-meal-name {
+
+.rsvp-attending.reject .icon {
+  color: red;
+}
+.rsvp-meal {
+  text-transform: capitalize;
+}
+.rsvp-meal-icon {
+}
+
+.veg .rsvp-meal-icon {
+  color: green;
+}
+.veg .rsvp-meal-name {
   color: green;
 }

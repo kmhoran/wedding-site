@@ -17,9 +17,8 @@ const theme = createMuiTheme({
       // main: "#5b6b90",
       //main: "#5b6b90", --> navy
       main: "#c62828"
-      
     },
-    contrastThreshold: 3,
+    contrastThreshold: 3
   }
 });
 

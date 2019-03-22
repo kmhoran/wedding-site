@@ -29,7 +29,7 @@ class VenuePage extends React.Component {
       venue
     });
   }
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     window.scrollTo(0, 0);
     const venue = venuInfo[nextProps.match.params.id];
     if (!venue) this.props.history.push(routes.Home);

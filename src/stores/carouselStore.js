@@ -37,25 +37,24 @@ class CarouselStore {
   //   return set.slice(0, 5);
   // }
 
-
   stepRight = () => {
     if (this.selectedIndex == null || !this.imageSet.length) return;
     this.selectedIndex = (this.selectedIndex + 1) % this.imageSet.length;
   };
   stepLeft = () => {
     if (this.selectedIndex == null || !this.imageSet.length) return;
-    this.selectedIndex = (this.imageSet.length+(this.selectedIndex - 1)) % this.imageSet.length;
-  }
+    this.selectedIndex =
+      (this.imageSet.length + (this.selectedIndex - 1)) % this.imageSet.length;
+  };
 
   startSlideshow = () => {
     // console.log("carousel Activated");
-    if(!this.isRunning){
+    if (!this.isRunning) {
       this.job = setInterval(() => {
         this.stepRight();
       }, 3000);
       this.isRunning = true;
     }
-    
   };
 
   stopSlideshow = () => {

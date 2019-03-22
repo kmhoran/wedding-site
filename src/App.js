@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import "./App.css";
 import WeddingPage from "./components/pages/theWedding/weddingPage";
-import VenuePage from './components/pages/theWedding/venuePage'
+import VenuePage from "./components/pages/theWedding/venuePage";
 import OurStoryPage from "./components/pages/ourStory/ourStoryPage";
 import RegistryPage from "./components/pages/registry/registryPage/registryPage";
 import RegisterItemDetail from "./components/pages/registry/registeredItemDetail/registeredItemDetail";
@@ -25,14 +25,14 @@ const App = props => {
         <Route path={`${routes.Registry}/:id`} component={RegisterItemDetail} />
         <Route path={routes.Registry} component={RegistryPage} />
         <Route path={routes.Photos} component={PhotoPage} />
-        <Route path={routes.Cincinnati} component={CincinnatiPage}/>
+        <Route path={routes.Cincinnati} component={CincinnatiPage} />
       </Switch>
     </Provider>
   );
 };
 
-function TESTROUTE (props) {
-  return (<h1>TEST</h1>)
+function TESTROUTE(props) {
+  return <h1>TEST</h1>;
 }
 
 export default App;

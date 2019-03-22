@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import RsvpDialog from "../../rsvp";
-import {ceremony, reception} from './venueInfo';
+import { ceremony, reception } from "./venueInfo";
 import "./eventOverview.css";
-import WhenAndWhere from './whenAndWhere';
+import WhenAndWhere from "./whenAndWhere";
 
 const EventSiteCard = props => {
   return (
@@ -11,15 +11,7 @@ const EventSiteCard = props => {
       <div className="event-name">{props.eventName}</div>
       {/* <Button>Get Directions</Button> */}
       <div className="event-site-title">{props.siteTitle}</div>
-      {/* <div className="event-site-address  info-line">
-        <i class="fas fa-map-marker-alt info-line-icon" />
-        <div className="info-line-content">{props.address}</div>
-      </div>
-      <div className="event-site-time  info-line">
-        <i class="far fa-clock" />
-        <div className="info-line-content">{props.time}</div>
-      </div> */}
-      <WhenAndWhere when={props.time} where={props.address}/>
+      <WhenAndWhere when={props.time} where={props.address} />
     </div>
   );
 };

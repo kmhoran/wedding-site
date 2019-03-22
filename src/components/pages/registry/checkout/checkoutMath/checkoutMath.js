@@ -3,38 +3,38 @@ import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Icon from "@material-ui/core/Icon";
-import FormatCurrency from '../../formatCurrency/formatCurrency'
+import FormatCurrency from "../../formatCurrency/formatCurrency";
 
 const styles = theme => ({
-    checkoutFrame: {
-        marginTop: "2em",
-        marginLeft: "1em",
-        maxWidth: "15em",
-        fontSize: "1.2em"
-      },
-      checkoutLine: {
-        margin: "0.5em",
-        display: "block"
-      },
-      checkoutPrice: {
-        float: "right"
-      },
-      processingFee: {
-        color: "#1a237e",
-        fontSize: "0.85em"
-      },
-      totalLine: {
-        borderTop: "1px solid #000",
-        paddingTop: "0.5em",
-        margin: "0 0.5em",
-        fontWeight: "600"
-      },
-      disclaimer: {
-        margin: theme.spacing.unit * 0.7,
-        fontSize: "0.7em",
-        display: "inline-table"
-      }
-})
+  checkoutFrame: {
+    marginTop: "2em",
+    marginLeft: "1em",
+    maxWidth: "15em",
+    fontSize: "1.2em"
+  },
+  checkoutLine: {
+    margin: "0.5em",
+    display: "block"
+  },
+  checkoutPrice: {
+    float: "right"
+  },
+  processingFee: {
+    color: "#1a237e",
+    fontSize: "0.85em"
+  },
+  totalLine: {
+    borderTop: "1px solid #000",
+    paddingTop: "0.5em",
+    margin: "0 0.5em",
+    fontWeight: "600"
+  },
+  disclaimer: {
+    margin: theme.spacing.unit * 0.7,
+    fontSize: "0.7em",
+    display: "inline-table"
+  }
+});
 
 const CheckoutMath = props => {
   const { subtotal, classes } = props;
@@ -71,7 +71,7 @@ const CheckoutMath = props => {
 };
 
 CheckoutMath.propTypes = {
-    classes: PropTypes.object.isRequired
-  };
+  classes: PropTypes.object.isRequired
+};
 
-  export default withStyles(styles)(CheckoutMath);
+export default withStyles(styles)(CheckoutMath);

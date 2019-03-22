@@ -25,10 +25,10 @@ class PhotobarStore {
     this.onDisplay = [];
     this.job = null;
     this.setImages();
-    console.log(toJS(this.imageSet));
-    autorun(() => {
-      console.log("autorun! ");
-    });
+    // console.log(toJS(this.imageSet));
+    // autorun(() => {
+    //   console.log("autorun! ");
+    // });
   }
 
   get loaded() {
@@ -142,14 +142,12 @@ class PhotobarStore {
   };
 
   activate = () => {
-    console.log("photoBarStore Activated");
     this.job = setInterval(() => {
       this.shuffleImages();
     }, 5000);
   };
 
   deactivate = () => {
-    console.log("photoBarStore Deactivated");
     clearInterval(this.job);
   };
 }

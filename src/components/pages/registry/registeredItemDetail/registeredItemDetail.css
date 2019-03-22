@@ -1,7 +1,6 @@
-
-.decimal-point{
-    font-size: 0.7em;
-    text-decoration: underline;
+.decimal-point {
+  font-size: 0.7em;
+  text-decoration: underline;
 }
 @media (max-width: 889px) {
   .detail-page {

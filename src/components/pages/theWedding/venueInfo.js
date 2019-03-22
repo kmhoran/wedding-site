@@ -1,6 +1,6 @@
-import photos from '../../../constants/photos'
-import routes from '../../../constants/routes';
-import {venueIds} from '../../../constants/routes';
+import photos from "../../../constants/photos";
+import routes from "../../../constants/routes";
+import { venueIds } from "../../../constants/routes";
 const veunueInfo = {
   "st-louis": {
     id: "st-louis",
@@ -14,7 +14,7 @@ const veunueInfo = {
     
     Recusabo mediocrem qui ut, adolescens adipiscing liberavisse at quo, vix ne ocurreret pertinacia. Deleniti sententiae no qui, nostrum voluptatum eam at. Sit prima consulatu cu, te diam unum soleat sea, per an commodo perpetua vulputate. Eam te perfecto sadipscing concludaturque. An sed augue utroque. Quem alia vivendo eos in, virtute instructior pro cu, usu iusto molestie in.`,
     image: photos.stLouis,
-    to:`${routes.Venue}/${venueIds.ceremony}`
+    to: `${routes.Venue}/${venueIds.ceremony}`
   },
   "cincinnati-club": {
     id: "cincinnati-club",
@@ -27,7 +27,7 @@ const veunueInfo = {
     
     Recusabo mediocrem qui ut, adolescens adipiscing liberavisse at quo, vix ne ocurreret pertinacia. Deleniti sententiae no qui, nostrum voluptatum eam at. Sit prima consulatu cu, te diam unum soleat sea, per an commodo perpetua vulputate. Eam te perfecto sadipscing concludaturque. An sed augue utroque. Quem alia vivendo eos in, virtute instructior pro cu, usu iusto molestie in.`,
     image: photos.cincinnatiClub,
-    to:`${routes.Venue}/${venueIds.reception}`
+    to: `${routes.Venue}/${venueIds.reception}`
   }
 };
 

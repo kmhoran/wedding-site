@@ -9,8 +9,8 @@ const routes = {
 };
 
 const venueIds = {
-  ceremony:'st-louis',
-  reception: 'cincinnati-club'
-}
+  ceremony: "st-louis",
+  reception: "cincinnati-club"
+};
 export default routes;
-export {venueIds}
+export { venueIds };

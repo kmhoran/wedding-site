@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 // import classNames from "classnames";
-import CheckoutMath from '../checkoutMath/checkoutMath'
+import CheckoutMath from "../checkoutMath/checkoutMath";
 import FormatCurrency from "../../formatCurrency/formatCurrency";
 
 const styles = theme => ({
@@ -80,10 +80,10 @@ const contributionSuggestions = [
 ];
 
 class ContributionCheckout extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   componentDidUpdate(prevProps, prevState) {
     if (this._input) this._input.focus();
   }
@@ -121,8 +121,11 @@ class ContributionCheckout extends React.Component {
   selectCustomContribution = e => {
     const input = e.target.value;
     if (!input) {
-        const suggestedValue = contributionSuggestions.find(i => i.value === this.state.contribution);
-        const newContribution = suggestedValue != null ? suggestedValue.value : null;
+      const suggestedValue = contributionSuggestions.find(
+        i => i.value === this.state.contribution
+      );
+      const newContribution =
+        suggestedValue != null ? suggestedValue.value : null;
       this.setState({
         customContribution: null,
         useCustomContribution: false,
@@ -143,7 +146,7 @@ class ContributionCheckout extends React.Component {
   };
 
   render() {
-    if (!this.state || !this.props ) return <div />;
+    if (!this.state || !this.props) return <div />;
     const {
       contribution,
       inputContribution,
@@ -160,48 +163,50 @@ class ContributionCheckout extends React.Component {
     }`;
 
     return (
-        <div>
-      <div className={classes.contributionChipFrame}>
-        {contributionSuggestions.map(amount => {
-          return (
-            <div
-              className={
-                useSuggestedContribution && contribution == amount.value
-                  ? selectedClasses
-                  : unselectedClasses
-              }
-              onClick={() => {
-                this.selectSuggestedContribution(amount.value);
-              }}
-            >{`$ ${amount.value}`}</div>
-          );
-        })}
-        <div
-          className={
-            useCustomContribution ? selectedClasses : unselectedClasses
-          }
-          onClick={this.openCustomContributionInput}
-        >
-          {inputContribution ? (
-            <span>
-              ${" "}
-              <input
-                className={classes.contributionInput}
-                value={customContribution || null}
-                onChange={this.selectCustomContribution}
-                onKeyPress={this.handleCustomContributionKeyPress}
-                ref={c => (this._input = c)}
-                onBlur={this.closeCustomContributionInput}
-              />
-            </span>
-          ) : customContribution ? (
-            FormatCurrency(customContribution)
-          ) : (
-            "Other Amount"
-          )}
+      <div>
+        <div className={classes.contributionChipFrame}>
+          {contributionSuggestions.map(amount => {
+            return (
+              <div
+                className={
+                  useSuggestedContribution && contribution == amount.value
+                    ? selectedClasses
+                    : unselectedClasses
+                }
+                onClick={() => {
+                  this.selectSuggestedContribution(amount.value);
+                }}
+              >{`$ ${amount.value}`}</div>
+            );
+          })}
+          <div
+            className={
+              useCustomContribution ? selectedClasses : unselectedClasses
+            }
+            onClick={this.openCustomContributionInput}
+          >
+            {inputContribution ? (
+              <span>
+                ${" "}
+                <input
+                  className={classes.contributionInput}
+                  value={customContribution || null}
+                  onChange={this.selectCustomContribution}
+                  onKeyPress={this.handleCustomContributionKeyPress}
+                  ref={c => (this._input = c)}
+                  onBlur={this.closeCustomContributionInput}
+                />
+              </span>
+            ) : customContribution ? (
+              FormatCurrency(customContribution)
+            ) : (
+              "Other Amount"
+            )}
+          </div>
         </div>
-      </div>
-      {this.state.contribution && (<CheckoutMath subtotal={this.state.contribution}/>)}
+        {this.state.contribution && (
+          <CheckoutMath subtotal={this.state.contribution} />
+        )}
       </div>
     );
   }
