@@ -18,7 +18,6 @@ class RsvpStore {
     this.localKey = "rsvps";
     this.rsvps = this.retrieveRsvps();
     autorun(() => {
-      // console.log("autorun! ", this.ids);
       saveSessionItem(this.localKey, { data: this.rsvps }, true);
     });
   }
@@ -27,10 +26,6 @@ class RsvpStore {
     const rsvpData = getSessionItem(this.localKey, true);
     return rsvpData ? rsvpData.data : toJS([]);
   };
-
-  // activate = () => {
-  //   console.log("rsvpStore Activated");
-  // };
 
   get ids() {
     return this.rsvps.map(g => g.id).join(", ");

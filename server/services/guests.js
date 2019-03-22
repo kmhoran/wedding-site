@@ -5,7 +5,6 @@ const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
 
 export async function saveGuests(request) {
   try {
-    console.log("server guests: ", request);
     const { guests } = request;
     const errors = [];
     const rows = guests
@@ -74,7 +73,6 @@ export async function saveGuests(request) {
       }
     ];
 
-    console.log("sending request: ", requests[0].appendCells.rows[0].values);
     return await new Promise((resolve, reject) => {
       const sheets = google.sheets("v4");
       withAuth((authErr, authClient) => {
@@ -90,7 +88,6 @@ export async function saveGuests(request) {
         };
         sheets.spreadsheets.batchUpdate(request, (updateErr, response) => {
           if (updateErr) {
-            console.log("### ERROR CAUGHT ###");
             reject(updateErr);
           }
           resolve({ context: guests, errors });
@@ -98,8 +95,7 @@ export async function saveGuests(request) {
       });
     });
   } catch (e) {
-    console.log("guest error:  ", e);
-    console.log("### ERROR CAUGHT ###");
+    console.error("guest error:  ", e);
     return { success: false, error: e };
   }
 }
@@ -123,7 +119,6 @@ function withAuth(callback) {
 
   jwtClient.authorize((err, tokens) => {
     if (err) {
-      console.log("### JWT ERROR ###");
       callback(err);
     } else {
       callback(null, jwtClient);
