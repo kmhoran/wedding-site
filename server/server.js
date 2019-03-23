@@ -7,20 +7,20 @@ import os from "os";
 import routes from "./routes";
 
 const numCPUs = os.cpus().length;
-
+const WORKER_COUNT = process.env.WEB_CONCURRENCY || numCPUs;
 const PORT = process.env.PORT || 3000;
 
 // Multi-process to utilize all CPU cores.
 if (cluster.isMaster) {
-  console.error(`Node cluster master ${process.pid} is running`);
+  console.info(`Node cluster master ${process.pid} is running`);
 
-  // Fork workers.
-  for (let i = 0; i < numCPUs; i++) {
+  // Fork workers
+  for (let i = 0; i < WORKER_COUNT; i++) {
     cluster.fork();
   }
 
   cluster.on("exit", (worker, code, signal) => {
-    console.error(
+    console.info(
       `Node cluster worker ${
         worker.process.pid
       } exited: code ${code}, signal ${signal}`
