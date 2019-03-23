@@ -32,7 +32,7 @@ function prepareDistDirectory() {
 function executeScripts() {
   return new Promise((resolve, reject) => {
     exec(
-      "yarn react-build && cp -rT ./build/ ./dist/ui && babel ./server -d ./dist",
+      "yarn react-build && cp -rT ./build/ ./dist/ui && cp ./dist/ui/favicon.ico ./dist/ui/static/favicon.ico && babel ./server -d ./dist",
       function(err, stdout, stderr) {
         if (err) {
           console.error(stderr);
