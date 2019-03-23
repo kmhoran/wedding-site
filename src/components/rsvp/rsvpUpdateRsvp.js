@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import DialogActions from "@material-ui/core/DialogActions";
 
-import "./rsvpUpdateGuest.css";
+import "./rsvpUpdateRsvp.css";
 
 class RsvpUpdateGuest extends React.Component {
   state = {};

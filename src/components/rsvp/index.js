@@ -38,7 +38,7 @@ const RsvpDialogView = inject("rsvpStore")(
       }
 
       componentDidMount() {
-        this.props.rsvpStore.activate();
+        // this.props.rsvpStore.activate();
       }
 
       handleClickOpen = () => {
