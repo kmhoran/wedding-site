@@ -5,11 +5,10 @@ import path from "path";
 import cluster from "cluster";
 import os from "os";
 import routes from "./routes";
-import config from "./config";
 
 const numCPUs = os.cpus().length;
 
-const PORT = config.port;
+const PORT = process.env.PORT || 3000;
 
 // Multi-process to utilize all CPU cores.
 if (cluster.isMaster) {
