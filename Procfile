@@ -1,1 +1,0 @@
-web: node ./build && node -r dotenv/config ./dist/server

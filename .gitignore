@@ -13,6 +13,11 @@
 
 # production
 /build
+/dist
+
+# pipeline
+build.js
+deploy
 
 # misc
 .env

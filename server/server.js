@@ -7,7 +7,7 @@ import os from "os";
 import routes from "./routes";
 
 const numCPUs = os.cpus().length;
-const WORKER_COUNT = process.env.WEB_CONCURRENCY || 2;
+const WORKER_COUNT = process.env.WEB_CONCURRENCY || numCPUs;
 const PORT = process.env.PORT || 3000;
 
 // Multi-process to utilize all CPU cores.

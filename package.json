@@ -27,6 +27,7 @@
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
     "build": "node ./build",
+    "deploy": "yarn build && ./deploy",
     "start": "yarn build && node -r dotenv/config ./dist/server dotenv_config_path=./.env.local"
   },
   "eslintConfig": {
