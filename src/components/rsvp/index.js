@@ -187,7 +187,7 @@ const RsvpDialogView = inject("rsvpStore")(
             <Dialog
               className={"modal-dialog"}
               fullScreen={fullScreen}
-              fullWidth="lg"
+              fullWidth={true}
               open={this.state.open}
               TransitionComponent={Transition}
               onClose={this.handleClose}

@@ -31,9 +31,9 @@ class StoryCell extends React.Component {
   ImagePane = props => {
     return (
       <div className={`${this.state.imagePaneClass}`}>
-        {props.src.map(path => {
+        {props.src.map((path, index) => {
           return (
-            <div className="image-frame">
+            <div className="image-frame" key={index}>
               <img className="image" src={path} />
             </div>
           );

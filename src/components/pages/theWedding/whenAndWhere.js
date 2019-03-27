@@ -8,11 +8,11 @@ function WhenAndWhere(props) {
   return (
     <div>
       <div className="wnw-where info-line">
-        <i class="fas fa-map-marker-alt info-line-icon" />
+        <i className="fas fa-map-marker-alt info-line-icon" />
         <div className="wnw-content">{where}</div>
       </div>
       <div className="wnw-when info-line">
-        <i class="far fa-clock" />
+        <i className="far fa-clock" />
         <div className="wnw-content">{when}</div>
       </div>
     </div>

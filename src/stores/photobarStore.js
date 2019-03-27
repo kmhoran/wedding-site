@@ -25,10 +25,6 @@ class PhotobarStore {
     this.onDisplay = [];
     this.job = null;
     this.setImages();
-    // console.log(toJS(this.imageSet));
-    // autorun(() => {
-    //   console.log("autorun! ");
-    // });
   }
 
   get loaded() {

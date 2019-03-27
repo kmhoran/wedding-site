@@ -14,9 +14,9 @@ const Footer = props => {
         </div>
         <div className="footer-detail-pane footer-info">
           <div className="footer-detail-pane footer-links">
-            {menuItems.map(i => {
+            {menuItems.map((i, index) => {
               return (
-                <div className="footer-link-item">
+                <div className="footer-link-item" key={index}>
                   <Link to={i.url}>{i.displayName}</Link>
                 </div>
               );

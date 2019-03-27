@@ -9,16 +9,12 @@ import {
 } from "mobx";
 import { gallarySet } from "../constants/photos";
 
-class CarouselStore {
+class GalleryStore {
   selectedIndex;
   imageSet;
-  job;
-  isRunning;
   constructor() {
     this.selectedIndex = 0;
     this.imageSet = gallarySet;
-    this.job = null;
-    this.isRunning = false;
     // autorun(() => {
     // });
   }
@@ -31,11 +27,9 @@ class CarouselStore {
     return toJS(this.imageSet[this.selectedIndex]);
   }
 
-  // get thumbnails() {
-  //   if (this.selectedIndex == null) return null;
-  //   const set = toJS(this.imageSet);
-  //   return set.slice(0, 5);
-  // }
+  get galleryImages() {
+    return toJS(this.imageSet);
+  }
 
   stepRight = () => {
     if (this.selectedIndex == null || !this.imageSet.length) return;
@@ -47,33 +41,23 @@ class CarouselStore {
       (this.imageSet.length + (this.selectedIndex - 1)) % this.imageSet.length;
   };
 
-  startSlideshow = () => {
-    if (!this.isRunning) {
-      this.job = setInterval(() => {
-        this.stepRight();
-      }, 3000);
-      this.isRunning = true;
-    }
-  };
-
-  stopSlideshow = () => {
-    clearInterval(this.job);
-    this.isRunning = false;
+  setImage = imageId => {
+    this.selectedIndex = this.imageSet
+      .map((img, index) => ({ ...img, index }))
+      .find(img => img.id === imageId).index;
   };
 }
 
-decorate(CarouselStore, {
+decorate(GalleryStore, {
   selectedIndex: observable,
-  imageSet: observable,
+  galleryImages: computed,
   stepRight: action,
   stepLeft: action,
-  startSlideshow: action,
-  stopSlideshow: action,
   loaded: computed,
   selectedImage: computed,
-  isRunning: observable
+  setImage: action
 });
 
-const carouselStore = new CarouselStore();
+const galleryStore = new GalleryStore();
 
-export default carouselStore;
+export default galleryStore;

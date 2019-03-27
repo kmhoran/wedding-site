@@ -68,7 +68,12 @@ class MobileBar extends React.Component {
       const menuArray = items.map((item, index) => {
         if (!item.rsvpDialog) {
           return (
-            <Link underline="none" color="text-primary" to={item.url}>
+            <Link
+              underline="none"
+              color="text-primary"
+              to={item.url}
+              key={index}
+            >
               <ListItem
                 onClick={this.toggleDrawer(false)}
                 onKeyDown={this.toggleDrawer(false)}
@@ -83,7 +88,7 @@ class MobileBar extends React.Component {
           );
         } else {
           return (
-            <RsvpDialog onClose={this.toggleDrawer(false)}>
+            <RsvpDialog onClose={this.toggleDrawer(false)} key={index}>
               <ListItem key={index}>
                 <ListItemText
                   className="mobile-menu-item"

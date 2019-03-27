@@ -19,9 +19,9 @@ class Home extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className={"App"}>
         <MobileBar />
-        <Hero imageSrc={photos.weddingHero} text="Katie & Kevin 2020" />
+        <Hero imageSrc={photos.weddingHero} text={"Katie & Kevin 2020"} />
         <WebBar />
         <EventOverview />
         <StoryCell />

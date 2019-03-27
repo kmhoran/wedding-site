@@ -1,4 +1,10 @@
 .photo-page-frame {
-  background-color: #333;
+  /* background-color: #333; */
   user-select: none;
+}
+.gallery-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

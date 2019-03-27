@@ -26,7 +26,7 @@ const EventOverview = props => {
         </Button>
       </RsvpDialog>
       <div className="info-line event-date">
-        <i class="far fa-calendar-alt info-line-icon" />
+        <i className="far fa-calendar-alt info-line-icon" />
         <div className="info-line-content">May 30, 2020</div>
       </div>
       <EventSiteCard

@@ -8,20 +8,20 @@ import { Button } from "@material-ui/core";
 
 const renderItem = items => {
   if (!items) return;
-  const menuArray = items.map(item => {
+  const menuArray = items.map((item, index) => {
     if (!item.rsvpDialog) {
       return (
-        <li className="web-bar-item">
-          <Link className="link" to={item.url}>
+        <li className={"web-bar-item"} key={index}>
+          <Link className={"link"} to={item.url}>
             {item.displayName}
           </Link>
         </li>
       );
     } else {
       return (
-        <li className="web-bar-item">
+        <li className={"web-bar-item"} key={index}>
           <RsvpDialog>
-            <Button variant="contained" color={"secondary"}>
+            <Button variant={"contained"} color={"secondary"}>
               {item.displayName}
             </Button>
           </RsvpDialog>

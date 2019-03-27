@@ -1,0 +1,39 @@
+.photo-dialog-title {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.photo-dialog-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.direction-arrow {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.direction-arrow .icon {
+  padding: 0 10px;
+}
+.direction-arrow span {
+  font-size: 2em !important;
+}
+.image-frame {
+  max-height: 99%;
+  min-height: 99%;
+  height: 99%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.image-frame .dialog-image {
+  max-height: 100%;
+  height: 100%;
+  width: auto;
+}
