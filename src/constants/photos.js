@@ -27,6 +27,7 @@ const gallarySet = [
     id: "66973da1-54ef-464d-9dba-f237542e2cfa",
     image: "https://farm8.staticflickr.com/7832/40346678983_490f307ef7_z.jpg",
     label: "Holiday Work Lovers",
+    cardAdjustment: { left: "-40%" },
     isPortrait: false
   },
   {
@@ -46,7 +47,8 @@ const gallarySet = [
   {
     id: "4cd5182c-7f46-4719-a298-fc23e3e4138d",
     image: "https://farm8.staticflickr.com/7857/32360358587_5432658260_z.jpg",
-    label: "Chateau d'Angers on our Loire Valley Road Trip"
+    label: "Chateau d'Angers on our Loire Valley Road Trip",
+    cardAdjustment: { left: "-40%" }
   },
 
   {
@@ -67,6 +69,7 @@ const gallarySet = [
     id: "a960dad9-1627-4a74-b812-6aa1b2d01a6d",
     image: "https://farm8.staticflickr.com/7844/40346678963_4225c976f2_z.jpg",
     label: "Holiday Pary Photo Booth",
+    cardAdjustment: { left: "-50%" },
     isPortrait: false
   },
 
@@ -81,12 +84,14 @@ const gallarySet = [
     id: "e3fecb20-d777-4944-a261-57757c865986",
     image: "https://farm8.staticflickr.com/7864/33426654958_acd0ebde8e_z.jpg",
     label: "SVdP Lu'au Fundraiser 2028",
+    cardAdjustment: { left: "-55%" },
     isPortrait: false
   },
   {
     id: "dcb34407-a4d6-4a29-9bf1-722e7867e963",
     image: "https://farm8.staticflickr.com/7818/33426654528_9972e4074b_z.jpg",
     label: "Cincinnati Music Hall - Moments Before the Proposal",
+    cardAdjustment: { left: "-25%" },
     isPortrait: false
   },
   {
@@ -100,6 +105,7 @@ const gallarySet = [
     id: "8b2287c4-4c0c-4f52-82e8-ab6bf09394a9",
     image: "https://farm8.staticflickr.com/7867/40346679053_7127865cfb_z.jpg",
     label: "Beautycounter Holiday Pary 2018",
+    cardAdjustment: { left: "-40%" },
     isPortrait: false
   }
 ];

@@ -119,20 +119,22 @@ const GalleryDialogView = inject("windowStore")(
                   </div>
                 )}
               </DialogContent>
-              <div className="mobile-portrait-actions">
-                <div
-                  className={"direction-arrow"}
-                  onClick={this.handleClickPrev}
-                >
-                  <Icon className={"icon fas fa-chevron-left"} />
+              {windowStore.isPortrait && windowStore.isMobile && (
+                <div className="mobile-portrait-actions">
+                  <div
+                    className={"direction-arrow"}
+                    onClick={this.handleClickPrev}
+                  >
+                    <Icon className={"icon fas fa-chevron-left"} />
+                  </div>
+                  <div
+                    className={"direction-arrow"}
+                    onClick={this.handleClickNext}
+                  >
+                    <Icon className={"icon fas fa-chevron-right"} />
+                  </div>
                 </div>
-                <div
-                  className={"direction-arrow"}
-                  onClick={this.handleClickNext}
-                >
-                  <Icon className={"icon fas fa-chevron-right"} />
-                </div>
-              </div>
+              )}
             </Dialog>
           </div>
         );

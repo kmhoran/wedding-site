@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import classNames from "classnames";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 
@@ -14,13 +15,16 @@ const styles = {
   },
   imageFrame: {
     height: "20em",
-    overflow: "hidden"
+    overflow: "hidden",
+    cursor: "pointer"
   },
   image: {
     height: "100%",
-    cursor: "pointer"
+    position: "relative"
   }
 };
+// const cx = classNames.bind(styles);
+const imagStyle = { left: "-30%" };
 
 function GalleryCard(props) {
   const { classes, photo } = props;
@@ -29,7 +33,11 @@ function GalleryCard(props) {
     <Card className={classes.card}>
       <CardContent>
         <div className={classes.imageFrame}>
-          <img className={classes.image} src={photo.image} />
+          <img
+            className={classes.image}
+            src={photo.image}
+            style={photo.cardAdjustment}
+          />
         </div>
       </CardContent>
     </Card>
