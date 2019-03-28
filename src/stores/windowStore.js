@@ -16,6 +16,7 @@ const MEDIA_PHONE = 889,
 class WindowStore {
   constructor() {
     this.windowWidth = window.innerWidth;
+    this.windowHeight = window.innerHeight;
     this.screenMode = this.windowWidth;
     this.addResizeListener();
     // autorun(() => {
@@ -24,6 +25,9 @@ class WindowStore {
 
   get isMobile() {
     return toJS(this.screenMode <= MEDIA_PHONE);
+  }
+  get isPortrait() {
+    return toJS(this.windowHeight > this.windowWidth);
   }
 
   updateWindowWidth = () => {
@@ -53,6 +57,9 @@ class WindowStore {
 }
 
 decorate(WindowStore, {
+  windowHeight: observable,
+  windowWidth: observable,
+  isPortrait: computed,
   screenMode: observable,
   isMobile: computed,
   updateWindowWidth: action

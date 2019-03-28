@@ -37,3 +37,9 @@
   height: 100%;
   width: auto;
 }
+.mobile-portrait-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10x 0;
+}

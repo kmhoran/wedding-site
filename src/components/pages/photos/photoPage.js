@@ -22,7 +22,7 @@ const PhotoPageView = inject("galleryStore", "windowStore")(
       }
 
       render() {
-        const { galleryStore, windowStore } = this.props;
+        const { galleryStore } = this.props;
         if (!galleryStore.loaded) return <div />;
         return (
           <div className="photo-page-frame">
@@ -33,7 +33,6 @@ const PhotoPageView = inject("galleryStore", "windowStore")(
                 <GalleryDialog
                   key={index}
                   photo={galleryStore.selectedImage}
-                  fullScreen={windowStore.isMobile}
                   onOpen={() => {
                     galleryStore.setImage(photo.id);
                   }}
