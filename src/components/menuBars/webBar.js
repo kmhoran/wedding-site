@@ -38,7 +38,9 @@ const WebBar = props => {
   return (
     <div id="web-bar-frame">
       <MenuLogo />
-      <ul className="web-bar-list">{renderItem(menuItems)}</ul>
+      <ul className="web-bar-list">
+        {renderItem(menuItems.filter(i => !i.mobileOnly))}
+      </ul>
     </div>
   );
 };

@@ -24,9 +24,7 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <App />
   </MuiThemeProvider>,
   document.getElementById("root")
 );

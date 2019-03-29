@@ -1,6 +1,12 @@
 import routes from "../../constants/routes";
 
 export const menuItems = [
+  {
+    url: routes.Home,
+    displayName: "Home",
+    rsvpDialog: false,
+    mobileOnly: true
+  },
   { url: routes.TheWedding, displayName: "The Wedding", rsvpDialog: false },
   { url: routes.OurStory, displayName: "Our Story", rsvpDialog: false },
   { url: routes.Photos, displayName: "Photos", rsvpDialog: false },

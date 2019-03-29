@@ -2,6 +2,7 @@ import React from "react";
 
 import EventOverview from "./eventOverview";
 import AreaMap from "./areaMap";
+import { observer, inject, Provider } from "mobx-react";
 
 import "./index.css";
 
@@ -28,18 +29,20 @@ import "./index.css";
 // |             |   Map        |
 // |             |              |
 // +-------------+--------------+
-
 const TheWedding = props => {
   return (
     <div id="the-wedding-frame">
       <div className="the-wedding-pane">
         <EventOverview />
       </div>
-      <div className="the-wedding-pane">
-        <AreaMap />
-      </div>
+      {props.flagStore.isFeatureEnabled() && (
+        <div className="the-wedding-pane">
+          <AreaMap />
+        </div>
+      )}
     </div>
   );
 };
+const TheWeddingView = inject("flagStore")(observer(TheWedding));
 
-export default TheWedding;
+export default TheWeddingView;
