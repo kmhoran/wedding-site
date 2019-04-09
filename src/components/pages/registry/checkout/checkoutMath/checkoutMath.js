@@ -20,7 +20,7 @@ const styles = theme => ({
     float: "right"
   },
   processingFee: {
-    color: "#1a237e",
+    color: "#000",
     fontSize: "0.85em"
   },
   totalLine: {

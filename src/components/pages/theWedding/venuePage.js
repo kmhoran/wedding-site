@@ -9,7 +9,7 @@ import routes from "../../../constants/routes";
 import AreaMap from "./areaMap";
 import WhenAndWhere from "./whenAndWhere";
 import Footer from "../footer";
-import { observer, inject, Provider } from "mobx-react";
+import { observer, inject } from "mobx-react";
 
 import "./venuePage.css";
 const VenuePageView = inject("flagStore")(
@@ -41,8 +41,7 @@ const VenuePageView = inject("flagStore")(
         });
       }
       render() {
-        const { flagStore } = this.props;
-        const { venue, loaded } = this.state;
+        const { venue } = this.state;
         if (!venue) return <div />;
         const isCeremonyPage = venue.id === ceremony.id;
         return (

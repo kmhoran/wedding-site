@@ -7,7 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 import Typography from "@material-ui/core/Typography";
-import Chip from "@material-ui/core/Chip";
+// import Chip from "@material-ui/core/Chip";
 import WebBar from "../../../menuBars/webBar";
 import MobileBar from "../../../menuBars/mobileBar";
 import Footer from "../../footer";
@@ -15,7 +15,7 @@ import Footer from "../../footer";
 import routes from "../../../../constants/routes";
 import RegistryProgress from "../registryProgress/registryProgress";
 import HoneymoonLogo from "../honeymoonLogo/honeymoonLogo";
-import FormatCurrency from "../formatCurrency/formatCurrency";
+// import FormatCurrency from "../formatCurrency/formatCurrency";
 import ContributionCheckout from "../checkout/contributionCheckout/contributionCheckout";
 import { items } from "../regiser";
 import "./registeredItemDetail.css";
@@ -93,7 +93,7 @@ class RegisteredItemDetail extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
     const item = items.find(i => {
-      return i.id == this.props.match.params.id;
+      return i.id === this.props.match.params.id;
     });
     if (!item) this.props.history.push(routes.Registry);
     this.setState({
@@ -126,7 +126,11 @@ class RegisteredItemDetail extends React.Component {
             <div className={classes.body}>
               <div class={classes.imageEntourage}>
                 <div className={classes.imageFrame}>
-                  <img className={classes.image} src={item.image} />
+                  <img
+                    className={classes.image}
+                    src={item.image}
+                    alt={item.name}
+                  />
                 </div>
                 {item.honeymoon && <HoneymoonLogo />}
                 <RegistryProgress item={item} />

@@ -1,12 +1,4 @@
-import {
-  observable,
-  computed,
-  action,
-  reaction,
-  autorun,
-  toJS,
-  decorate
-} from "mobx";
+import { action, decorate } from "mobx";
 
 class FlagStore {
   constructor() {
@@ -15,7 +7,8 @@ class FlagStore {
   }
 
   setFlags = () => ({
-    weddingMap: false
+    weddingMap: false,
+    registry: false
   });
 
   isFeatureEnabled = name => {

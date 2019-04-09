@@ -5,6 +5,7 @@ import MenuLogo from "./menuLogo";
 import RsvpDialog from "../rsvp";
 import { menuItems } from "./menuContents";
 import { Button } from "@material-ui/core";
+import { observer, inject } from "mobx-react";
 
 const renderItem = items => {
   if (!items) return;
@@ -39,10 +40,20 @@ const WebBar = props => {
     <div id="web-bar-frame">
       <MenuLogo />
       <ul className="web-bar-list">
-        {renderItem(menuItems.filter(i => !i.mobileOnly))}
+        {renderItem(
+          menuItems
+            .filter(i => !i.mobileOnly)
+            .filter(
+              i =>
+                props.flagStore.isFeatureEnabled("registry") ||
+                i.displayName !== "Registry"
+            )
+        )}
       </ul>
     </div>
   );
 };
 
-export default WebBar;
+const WebBarView = inject("flagStore")(observer(WebBar));
+
+export default WebBarView;

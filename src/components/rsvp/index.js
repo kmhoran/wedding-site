@@ -8,8 +8,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
-import { observer, inject, Provider } from "mobx-react";
-import { reaction } from "mobx";
+import { observer, inject } from "mobx-react";
+// import { reaction } from "mobx";
 import Icon from "@material-ui/core/Icon";
 import classNames from "classnames";
 
@@ -45,7 +45,7 @@ const RsvpDialogView = inject("rsvpStore")(
         const { rsvpStore } = this.props;
         this.setState({
           open: true,
-          addingRsvp: rsvpStore.rsvps.length == 0,
+          addingRsvp: rsvpStore.rsvps.length === 0,
           updatingRsvp: false,
           highlightedRsvp: null
         });
@@ -197,19 +197,19 @@ const RsvpDialogView = inject("rsvpStore")(
                 className: "the-paper"
               }}
             >
-              <div>
+              <div className={"ex-bar"}>
                 <Button onClick={this.closeDialog}>
                   <Icon className={classNames("fas fa-times")} />
                 </Button>
               </div>
               <DialogTitle id="responsive-dialog-title">
-                {rsvpStore.rsvps.length == 0 || addingRsvp
+                {rsvpStore.rsvps.length === 0 || addingRsvp
                   ? "Thank you for your RSVP"
                   : "Let us know if your plans have changed."}
               </DialogTitle>
               <DialogContent>
                 <DialogContentText>
-                  {rsvpStore.rsvps.length == 0 || addingRsvp ? (
+                  {rsvpStore.rsvps.length === 0 || addingRsvp ? (
                     <RsvpAddName
                       submitRsvp={this.handleRsvpSubmit}
                       returnToMain={this.returnToMain}

@@ -58,7 +58,7 @@ class StoryCell extends React.Component {
             remaining essentially unchanged.
           </div>
           <Link to={routes.OurStory}>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="primary">
               Read More
             </Button>
           </Link>

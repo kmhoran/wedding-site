@@ -1,0 +1,80 @@
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+.paralax {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex: 1 0 auto;
+  z-index: -1;
+  transform: translateZ(-3px) scale(2);
+  background-attachment: fixed;
+  background: url("https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+}
+/* .paralax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-size: 100%;
+  z-index: -1;
+  background-image: url("https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"); */
+/* } */
+.content-container {
+  display: block;
+  position: relative;
+  z-index: 1;
+  background-color: white;
+}
+.content {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 75px 0;
+}
+
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.ContentContainer {
+  position: relative;
+  display: block;
+  background-color: white;
+  z-index: 1;
+}
+
+.Content {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 75px 0;
+}
+
+p {
+  margin: 75px 0;
+}
+
+.ParallaxContainer {
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: -1;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  transform: translateZ(-1.5px) scale(2);
+  background: url(https://www.toptal.com/designers/subtlepatterns/patterns/sakura.png);
+  background-color: rgb(250, 228, 216);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,800");

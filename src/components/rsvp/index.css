@@ -1,3 +1,9 @@
+.ex-bar {
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+}
+
 .rsvp-collection {
   display: flex;
   flex-direction: row;

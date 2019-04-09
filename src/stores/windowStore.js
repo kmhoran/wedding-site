@@ -33,6 +33,7 @@ class WindowStore {
   updateWindowWidth = () => {
     const prevWidth = this.windowWidth;
     this.windowWidth = window.innerWidth;
+    this.windowHeight = window.innerHeight;
 
     const newScreenMode = this.updateScreenMode(window.innerWidth, prevWidth);
     if (newScreenMode) this.screenMode = newScreenMode;

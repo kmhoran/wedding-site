@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { observer, inject, Provider } from "mobx-react";
 import MobileBar from "../../menuBars/mobileBar";
 import WebBar from "../../menuBars/webBar";
 import EventOverview from "../theWedding/eventOverview";
 import StoryCell from "../ourStory/storyCell";
-import ViewCell from "../viewCell";
 import Hero from "../../hero";
 import LocationTileBar from "./locationTile";
 import PhotoBar from "../photos/photoBar";
@@ -27,7 +25,7 @@ class Home extends Component {
         <StoryCell />
         <LocationTileBar />
         <PhotoBar />
-        <Footer />
+        <Footer onLogoClick={() => window.scrollTo(0, 0)} />
       </div>
     );
   }

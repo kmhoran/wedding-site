@@ -13,6 +13,7 @@ import CincinnatiPage from "./components/pages/cincinnati/cincinnatiPage";
 import routes from "./constants/routes";
 import { Provider } from "mobx-react";
 import stores from "./stores";
+import flagStore from "./stores/flagStore";
 
 const App = props => {
   return (
@@ -23,11 +24,19 @@ const App = props => {
           <Route path={routes.TheWedding} component={WeddingPage} />
           <Route path={`${routes.Venue}/:id`} component={VenuePage} />
           <Route path={routes.OurStory} component={OurStoryPage} />
-          <Route
-            path={`${routes.Registry}/:id`}
-            component={RegisterItemDetail}
-          />
-          <Route path={routes.Registry} component={RegistryPage} />
+          {flagStore.isFeatureEnabled("registry") && (
+            <Route
+              path={`${routes.Registry}/:id`}
+              component={RegisterItemDetail}
+            />
+          )}
+          {flagStore.isFeatureEnabled("registry") && (
+            <Route path={routes.Registry} component={RegistryPage} />
+          )}
+          {!flagStore.isFeatureEnabled("registry") && (
+            <Route path={routes.Registry} component={Home} />
+          )}
+
           <Route path={routes.Photos} component={PhotoPage} />
           <Route path={routes.Cincinnati} component={CincinnatiPage} />
         </Switch>

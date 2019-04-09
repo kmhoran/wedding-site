@@ -8562,6 +8562,11 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-parallax@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-2.2.0.tgz#676ef4d94d0e2e56520f175c1c213eafa8aa6c15"
+  integrity sha512-nBOfrfuxjeAUjnovJfDygEh4c7YsiuSylzxI81kqovedI/zvwoHM6CwFiqkRWkTOEqt0TamKtd5N8j7KR6jEHA==
+
 react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"

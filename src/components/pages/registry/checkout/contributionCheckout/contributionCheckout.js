@@ -18,20 +18,20 @@ const styles = theme => ({
     cursor: "pointer",
     userSelect: "none",
     fontSize: "1.2em",
-    padding: "0.7em 0",
+    // padding: "0.7em 0",
     borderRadius: "9999px",
     minWidth: "3.2em",
     textAlign: "center",
     padding: 5
   },
   unselectedContribution: {
-    border: "1px solid #1a237e",
-    color: "#1a237e",
+    border: "1px solid #000",
+    color: "#000",
     backgroundColor: "rgba(255,255,255,0.7)"
   },
   selectedContribution: {
     color: "#fff",
-    backgroundColor: "#1a237e",
+    backgroundColor: "#000",
     border: "1px solid #fff"
   },
   contributionInput: {
@@ -51,7 +51,7 @@ const styles = theme => ({
     float: "right"
   },
   processingFee: {
-    color: "#1a237e",
+    color: "000",
     fontSize: "0.85em"
   },
   totalLine: {
@@ -113,7 +113,7 @@ class ContributionCheckout extends React.Component {
   };
 
   handleCustomContributionKeyPress = e => {
-    if (e.key == "Enter") {
+    if (e.key === "Enter") {
       this.closeCustomContributionInput();
     }
   };
@@ -169,7 +169,7 @@ class ContributionCheckout extends React.Component {
             return (
               <div
                 className={
-                  useSuggestedContribution && contribution == amount.value
+                  useSuggestedContribution && contribution === amount.value
                     ? selectedClasses
                     : unselectedClasses
                 }

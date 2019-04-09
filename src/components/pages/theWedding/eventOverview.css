@@ -33,11 +33,11 @@
 }
 
 .event-site {
-  margin-top: 1em;
+  padding-top: 3em;
 }
-.event-site:not(:last-child) {
+/* .event-site:not(:last-child) {
   margin-bottom: 2em;
-}
+} */
 .event-name {
   margin-bottom: 0.5em;
   font-size: 1.2em;

@@ -15,6 +15,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Link } from "react-router-dom";
 import RsvpDialog from "../rsvp";
+import { observer, inject } from "mobx-react";
 
 import "./mobileBar.css";
 
@@ -117,7 +118,15 @@ class MobileBar extends React.Component {
           </ListItem>
         </List>
         <Divider />
-        <List>{renderItems(menuItems)}</List>
+        <List>
+          {renderItems(
+            menuItems.filter(
+              i =>
+                this.props.flagStore.isFeatureEnabled("registry") ||
+                i.displayName !== "Registry"
+            )
+          )}
+        </List>
       </div>
     );
 
@@ -155,4 +164,6 @@ MobileBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MobileBar);
+const MobileBarView = inject("flagStore")(observer(MobileBar));
+
+export default withStyles(styles)(MobileBarView);

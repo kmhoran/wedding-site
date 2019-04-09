@@ -196,8 +196,8 @@ class RsvpAddName extends React.Component {
   }
 
   choosePreferences = props => {
-    const { classes } = props;
-    const { firstName, lastName, restrictions } = this.state;
+    // const { classes } = props;
+    const { firstName, lastName } = this.state;
     return (
       <div>
         <div className="full-name">{`${firstName} ${lastName}`}</div>

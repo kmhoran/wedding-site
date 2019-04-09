@@ -18,6 +18,7 @@ import "./galleryDialog.css";
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
+
 const GalleryDialogView = inject("windowStore")(
   observer(
     class GalleryDialog extends React.Component {
@@ -28,6 +29,14 @@ const GalleryDialogView = inject("windowStore")(
         };
       }
       componentDidMount() {}
+
+      getImageFrameClass() {
+        const { windowStore } = this.props;
+        if (!windowStore.isMobile) return "desktop-image-frame";
+        return windowStore.isPortrait
+          ? "mobile-tall-image-frame"
+          : "mobile-wide-image-frame";
+      }
 
       handleClickOpen = () => {
         if (this.props.onOpen) this.props.onOpen();
@@ -56,14 +65,7 @@ const GalleryDialogView = inject("windowStore")(
         const paperStyle = windowStore.isMobile
           ? {}
           : { height: "70vh", maxHeight: "700px" };
-        const imageStyle =
-          windowStore.isMobile && windowStore.isPortrait
-            ? {
-                minHeight: "auto",
-                height: "auto",
-                width: "100%"
-              }
-            : {};
+
         return (
           <div>
             <div className={"trigger"} onClick={this.handleClickOpen}>
@@ -81,18 +83,18 @@ const GalleryDialogView = inject("windowStore")(
               onBackdropClick={this.closeDialog}
               PaperProps={{
                 className: "the-paper",
-                style: paperStyle
+                style: paperStyle,
+                overflow: "hidden"
               }}
             >
-              <div>
+              <div className={"ex-bar"}>
                 <Button onClick={this.closeDialog}>
                   <Icon className={classNames("fas fa-times")} />
                 </Button>
               </div>
-              {!windowStore.isMobile && (
-                <div className={"photo-dialog-title"}>{photo.label}</div>
-              )}
-
+              {/* {!windowStore.isMobile && ( */}
+              <div className={"photo-dialog-title"}>{photo.label}</div>
+              {/* // )} */}
               <DialogContent className={"photo-dialog-content"}>
                 {!(windowStore.isPortrait && windowStore.isMobile) && (
                   <div
@@ -103,12 +105,8 @@ const GalleryDialogView = inject("windowStore")(
                   </div>
                 )}
 
-                <div className={"image-frame"} style={imageStyle}>
-                  <img
-                    className={"dialog-image"}
-                    src={photo.image}
-                    style={imageStyle}
-                  />
+                <div className={this.getImageFrameClass()}>
+                  <img className={"dialog-image"} src={photo.image} />
                 </div>
                 {!(windowStore.isPortrait && windowStore.isMobile) && (
                   <div

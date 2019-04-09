@@ -1,5 +1,5 @@
 import React from "react";
-import MapContainer from "./map";
+// import MapContainer from "./map";
 
 import "./areaMap.css";
 

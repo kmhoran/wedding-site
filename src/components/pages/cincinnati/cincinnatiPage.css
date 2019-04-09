@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+
+.video-pane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+
+  background-color: #ddf;
+}
+.quote-cell {
+  position: absolute;
+  color: #fff;
+  left: 20px;
+  bottom: 30px;
+}
+.quote-cell .quote p {
+  font-size: 1.7em;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Permanent Marker", cursive;
+}
+.quote-cell .attribution {
+  font-size: 1.2em;
+  position: relative;
+  left: 20px;
+}
+.video-pane video {
+  width: 100%;
+}
+.intro {
+  padding-top: 5em;
+  padding-bottom: 7em;
+
+  width: 100%;
+}
+.where-to-stay {
+  padding: 7em 0;
+  min-height: 50vh;
+  width: 100%;
+  background-color: #960709;
+  color: #fff;
+}
+.where-to-stay .cincy-content-cell-acion-link {
+  /* color: #000; */
+  color: #fff;
+}
+.stuff-to-do {
+  padding: 7em 0;
+  min-height: 50vh;
+  width: 100%;
+  /* background-color: #960709;
+  color: #fff; */
+}
+.stuff-to-do .cincy-content-cell-acion-link {
+  /* color: #fff; */
+  color: #000;
+}
+.cincy-content-pane {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  height: 60vh;
+}
+.cincy-content-cell {
+  flex-grow: 1;
+  max-width: 50%;
+}
+.cincy-content-image-frame {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* .cincy-content-image-frame img {
+  height: 100%;
+} */
+
+.paralax-cell {
+  min-width: 50vw;
+  position: relative;
+  top: 7vh;
+}
+.cincy-content-image-frame .filler {
+  min-width: 50vw;
+  height: 27.5vw;
+}
+.cell-text {
+  padding: 0 2em;
+  font-size: 1.3em;
+}
+.cincy-content-title {
+  font-size: 2em;
+  font-weight: 700;
+}
+.cincycontent-cell-subtitle {
+  font-size: 1.7em;
+  margin-top: 1.2em;
+}
+
+.cincy-content-cell-line {
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: nowrap;
+}
+.cincy-content-cell-acion-link {
+  margin-left: 1em;
+}
+
+.cincy-content-paragraph {
+  margin-top: 1em;
+  font-size: 1.3em;
+}
+.brewery-title {
+  padding-left: 1.3em;
+  /* padding-top: 1.3em; */
+  font-size: 2em;
+  font-weight: 700;
+  /* border-top: 1px dashed #888; */
+}
+.brewery-collection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.brewery-card {
+  /* border: 1px solid red; */
+  max-width: 250px;
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 1.5s;
+  position: relative;
+  top: 100%;
+  opacity: 0;
+}
+.brewery-card.visible {
+  top: 0;
+  opacity: 1;
+}
+.brewery-card img {
+  width: 100%;
+}
+.brewery-card-name {
+  /* border: 1px solid red; */
+  text-align: center;
+  font-size: 1.2em;
+  justify-self: end;
+}
+@media (max-width: 899px) {
+  /* .video-pane {
+    height: 50vh;
+  } */
+  .cincy-content-cell {
+    max-width: 100%;
+  }
+  .cell-image {
+    display: none;
+  }
+  .quote-cell .quote p {
+    font-size: 1.2em;
+  }
+  .quote-cell .attribution {
+    font-size: 1.1em;
+  }
+  .video-pane video {
+    width: 200%;
+  }
+  .where-to-stay {
+    min-height: 650px;
+  }
+  .stuff-to-do {
+    min-height: 650px;
+  }
+}
+@media (max-width: 500px) {
+  /* .video-pane {
+    height: 30vh;
+  } */
+  /* .video-pane {
+    height: 100vh;
+  } */
+  .video-pane video {
+    width: 300%;
+  }
+}
