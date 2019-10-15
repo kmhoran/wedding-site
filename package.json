@@ -8,7 +8,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "google-maps-react": "^2.0.2",
-    "googleapis": "27",
+    "googleapis": "44",
     "lodash": "^4.17.11",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
